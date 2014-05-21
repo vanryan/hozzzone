@@ -1,0 +1,310 @@
+/*!
+ * hozzz
+ * @author Teng Long
+ * @version 0.0.0
+ * @time 2014-05-17 16:29
+ */
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background: white;
+  color: #5e5e5e;
+}
+
+a {
+  color: #5e5e5e;
+}
+
+.outer-box {
+  margin: 0 auto;
+  width: 1180px;
+  position: relative;
+}
+
+#nav {
+  /* position: fixed; */
+  /* left: 0; */
+  /* top: 0; */
+  float: left;
+  width: 120px;
+}
+#nav .user {
+  margin-bottomt: 20px;
+  overflow: hidden;
+}
+#nav .user .avatar {
+  float: left;
+}
+#nav .user .settings {
+  float: left;
+  margin-right: 100px;
+}
+#nav .user .settings ul {
+  display: none;
+}
+#nav .navigate {
+  margin-bottom: 20px;
+}
+#nav .navigate li {
+  font-size: 14px;
+  margin-bottom: 10px;
+  width: 100px;
+  text-align: center;
+}
+#nav .navigate ul li a {
+  display: block;
+  border-radius: 3px;
+  padding: 5px 12px;
+  border: 1px solid #dddddd;
+}
+#nav .navigate ul.category {
+  margin-top: 10px;
+}
+#nav .navigate ul.category li a {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 2px 4px;
+  background: #dddddd;
+}
+
+#main-box {
+  padding-top: 33px;
+}
+#main-box .default {
+  margin: 0 290px 0 200px;
+  background: blue;
+}
+#main-box .default .item {
+  margin-bottom: 54px;
+  overflow: hidden;
+}
+#main-box .default .item .avatar {
+  float: left;
+  margin-top: 10px;
+  width: 80px;
+  text-align: center;
+}
+#main-box .default .item .avatar img {
+  width: 80px;
+  height: 80px;
+}
+#main-box .default .item .avatar .like {
+  color: #ccc;
+}
+#main-box .default .item .content {
+  width: 570px;
+  margin-left: 98px;
+  border: 1px solid #000;
+  padding: 10px;
+}
+#main-box .default .item .content .front {
+  width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+#main-box .default .item .content .front a img {
+  width: 540px;
+  height: 480px;
+}
+#main-box .square {
+  margin: 0 260px 0 170px;
+  background: #dddddd;
+}
+#main-box .square .item {
+  display: inline-block;
+  width: 230px;
+  height: 300px;
+  background: red;
+  margin: 0 10px 20px 10px;
+  vertical-align: top;
+}
+#main-box .square .item .img-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+#main-box .square .item .img-overlay .shadow {
+  opacity: 0.3;
+  width: 210px;
+  height: 50px;
+  padding: 10px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#main-box .square .item .content {
+  position: relative;
+  width: 230px;
+  height: 250px;
+  background: yellow;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+#main-box .square .item .info {
+  height: 50px;
+  padding: 0 10px;
+  overflow: hidden;
+  text-align: left;
+  line-height: 50px;
+}
+#main-box .square .item .info .avatar {
+  float: right;
+  margin: 0;
+  width: auto;
+  cursor: pointer;
+}
+#main-box .square .item .info .avatar img {
+  width: 35px;
+  height: 35px;
+  border-radius: 35px;
+  vertical-align: middle;
+}
+#main-box .album {
+  margin: 0 290px 0 200px;
+  background: #efefef;
+}
+#main-box .album .albumInfo {
+  text-align: center;
+}
+#main-box .album .albumInfo .avatar {
+  margin: 0 auto;
+  width: 80px;
+  cursor: pointer;
+}
+#main-box .album .albumInfo .avatar img {
+  margin-bottom: 5px;
+  height: 80px;
+  width: 80px;
+}
+#main-box .album .albumInfo .avatar span {
+  display: block;
+}
+#main-box .album .albumInfo .subscribe {
+  padding-left: 40px;
+  line-height: 30px;
+  background: url() center left no-repeat;
+  display: inline-block;
+  cursor: pointer;
+}
+#main-box .album .albumContent {
+  padding: 0 100px;
+}
+#main-box .album .albumContent .item {
+  text-align: center;
+  padding: 15px 0 30px 0;
+  border-bottom: 1px solid red;
+}
+#main-box .album .albumContent .imgWrapper {
+  display: inline-block;
+  position: relative;
+}
+#main-box .album .albumContent .imgWrapper img {
+  display: block;
+}
+#main-box .album .albumContent .imgWrapper .imgMeta {
+  text-align: center;
+  height: 30px;
+  width: 100%;
+  background: red;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+#main-box .album .albumContent .imgWrapper .imgMeta .rehoz {
+  background: #000;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+#main-box .album .albumContent .imgWrapper .collect {
+  border-radius: 5px;
+  display: inline-block;
+  background: blue;
+  padding: 4px 12px;
+}
+#main-box .album .albumContent .imgTitle {
+  text-align: center;
+}
+
+.rightBar {
+  width: 210px;
+  float: right;
+}
+.rightBar .viewer {
+  padding-top: 20px;
+}
+.rightBar .viewer li {
+  width: 25px;
+  padding: 10px 0 10px 29px;
+  border-left: 1px solid transparent;
+}
+.rightBar .viewer li.active {
+  border-left: 1px solid #a5a5a5;
+}
+.rightBar .viewer li a {
+  display: block;
+  width: 25px;
+  height: 16px;
+}
+.rightBar .viewer li:hover {
+  border-left: 1px solid #a5a5a5;
+}
+.rightBar .viewer li.default:hover a {
+  background: url(../img/active_default_view.png);
+}
+.rightBar .viewer li.default a {
+  background: url(../img/default_view.png);
+}
+.rightBar .viewer li.square:hover a {
+  background: url(../img/active_square_view.png);
+}
+.rightBar .viewer li.square a {
+  background: url(../img/square_view.png);
+}
+.rightBar .viewer li.brick a {
+  background: url(../img/brick_view.png);
+}
+.rightBar .viewer li.brick:hover a {
+  background: url(../img/active_brick_view.png);
+}
+.rightBar .add {
+  margin-top: 30px;
+  text-indent: -9999px;
+  overflow: hidden;
+  margin-left: 18px;
+  width: 52px;
+  height: 49px;
+  background: url(../img/upload.png) 0 0 no-repeat;
+  display: block;
+  cursor: pointer;
+}
+.rightBar .search-text {
+  margin-top: 40px;
+  border: 1px solid #999;
+  padding: 10px 30px 10px 10px;
+  background: url(../img/search.png) 180px center no-repeat;
+}
+
+/*# sourceMappingURL=main.css.map */
