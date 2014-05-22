@@ -1,0 +1,137 @@
+@import 'reset';
+
+$font: Helvetica, sans-serif;
+$nav-font: 14px;
+$primary-color: #fff;
+$sub-color: #ddd;
+$box-color: blue;
+$font-color: #5e5e5e;
+
+$main-box-padding-top: 33px;
+$main-box-default-item-margin-bottom: 54px;
+
+
+// nav
+$navLinkColor: #5e5e5e;
+$navCategoryLinksColor: #7f7f7f;
+
+
+
+
+// rightBar
+$searchTextWidth: 70px;
+$searchTextPaddingTop: 10px;
+$searchTextPaddingLeft: 10px;
+$searchTextPaddingRight: 30px;
+$searchTextIconToLeft: $searchTextWidth + $searchTextPaddingLeft;
+
+
+
+// default viewer
+$defaultViewerWidth: 690px;
+
+
+// square viewer
+$squareViewerWidth: 921px;
+$squareItemMarginRight: 37px;
+$squareItemMarginBottom: 28px;
+$squareItemImgWidth: ($squareViewerWidth - $squareItemMarginRight * 3) / 3;
+$squareItemShadowPadding: 25px;
+$squareItemShadowFontColor: #f2f2f2;
+$squareItemAvatarMarginRight: 8px;
+$squareItemInfoHeight: 50px;
+$squareItemInfoPLeft: 10px;
+$squareItemInfoPRight: 24px;
+$squareItemAvatarToLeft: 160;
+$squareItemAvatarWidthAndHeight: 30px;
+$squareItemAvatarNameColor: #999;
+
+
+
+// album
+
+$albumViewerWidth: 584px;
+
+
+
+
+
+// albumComment
+$albumCommentTextareaBorder: 1px;
+$albumCommentTextareaPadding: 10px;
+$albumCommentTextareaWidth: $albumViewerWidth - 2 * ($albumCommentTextareaPadding + $albumCommentTextareaBorder); 
+
+$albumCommenterAvatarWidth: 60px;
+$albumReplyCommenterAvatarWidth: 40px;
+$albumCommenterAvatarMarginRight: 15px;
+
+$albumCommentReplyListMarginLeft: 74px;
+$albumCommentReplyListPaddingLeft: 13px;
+$albumCommentReplyListPaddingTop: 18px;
+
+$albumComment: $albumViewerWidth - $albumCommenterAvatarWidth - $albumCommenterAvatarMarginRight;
+$albumReplyComment: $albumViewerWidth - $albumCommentReplyListMarginLeft - $albumReplyCommenterAvatarWidth - $albumCommenterAvatarMarginRight - 2 * $albumCommentReplyListPaddingLeft;
+
+
+
+
+
+
+
+
+$viewer-left-margin: 29px;
+$rightBar-add-margin-top: 30px;
+$rightBar-search-margin-top: 40px;
+
+
+body {
+    background: $primary-color;
+    color: $font-color;
+    font-size: 14px;
+}
+
+a {
+    color: $font-color;
+}
+
+.outer-box {
+    width: 100%;
+    position: relative;
+    border-top: 8px solid #999;
+}
+
+
+
+%viewer {
+    margin: 0 auto;
+}
+
+
+#main-box {
+    padding-top: $main-box-padding-top;
+
+    .default {
+        @extend %viewer; 
+        width: $defaultViewerWidth;
+    }
+    
+    .square {
+        @extend %viewer; 
+        width: $squareViewerWidth;
+        background: $sub-color;
+    }
+
+    .album {
+        @extend %viewer; 
+        width: $albumViewerWidth;
+    }
+}
+
+
+
+@import "nav";
+@import "rightBar";
+@import "viewer/default";
+@import "viewer/square";
+@import "album/album";
+@import "album/albumComment";

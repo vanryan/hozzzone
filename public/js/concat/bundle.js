@@ -86,9 +86,6 @@ H.View = Backbone.View.extend({
     destory: function() {
     
     },
-    remove: function() {
-    
-    },
     detachAllEvents: function() {
     
     },
@@ -101,16 +98,40 @@ H.View = Backbone.View.extend({
     
     },
     appendSibling: function(siblingViewData) {
-        this.parent.$el.append(siblingViewData.html)
+        this.parent.$el.append(siblingViewData.html);
         H.viewFactory.append(siblingViewData.view, this.parent);
         console.log('appended a sibling!!'); 
     },
+    // 5.22
+    replaceEle: function(html) {
+        this.$el.replaceWith(html);
+        this.remove();
+        this.off();
+    },
+    replaceView: function(viewModule) {
+        this.parent.children.push(H.viewFactory.create(viewModule, this.parent.$el));
+    },
+    // 5.22
     showLoading: function() {
         console.log('Loading...'); 
     }
 });
 
-;var H = H || {};
+;/*
+ * view json init:
+ *
+ * uid
+ * name
+ * data
+ * options
+ *
+ *
+ *
+ */
+
+
+
+var H = H || {};
 
 H.loadViewConstructor = function(viewName) {
     return H.views[viewName]; 
@@ -161,7 +182,7 @@ _.extend(H.Resource.prototype, {
         var promise = this._call(method);
 
         promise.fail(function(err) {
-            console.log(err);
+            // console.log(err);
         });
 
         if(callbacks && callbacks.success) {
@@ -203,7 +224,92 @@ _.extend(H.Resource.prototype, {
                 }
 
                 if(textStatus === 'error') {
-                    return void defer.reject('error, fuck!');
+                    var test_json = {
+                        html: '<ul class="default" id="defaultItems-1"> <li class="item" id="item-1"> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">client</span> </div> <div class="content"> <div class="front"> <div> <a href="" class="calbum"><img src="../src/img/img1.png" alt=""></a> </div> <div> <span class="title">男士 手提包 时尚元素</span><br> <a class="like" id="button-1"  href="#"><span>1054</span></a> </div> </div> <div class="peek"> <div class="sub-item"><a href=""><img src="" alt=""></a></div> </div> </div> </li> <li class="item" id="item-2"> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">client</span> </div> <div class="content"> <div class="front"> <div> <a href="" class="calbum"><img src="../src/img/img1.png" alt=""></a> </div> <div> <span class="title">男士 手提包 时尚元素</span><br> <a class="like" id="button-2"  href="#"><span>1054</span></a> </div> </div> <div class="peek"> <div class="sub-item"><a href=""><img src="" alt=""></a></div> </div> </div> </li> <li class="item" id="item-3"> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">client</span> </div> <div class="content"> <div class="front"> <div> <a href="" class="calbum"><img src="../src/img/img1.png" alt=""></a> </div> <div> <span class="title">男士 手提包 时尚元素</span><br> <a class="like" id="button-3"  href="#"><span>1054</span></a> </div> </div> <div class="peek"> <div class="sub-item"><a href=""><img src="" alt=""></a></div> </div> </div> </li> </ul>',
+                        view: {
+                            uid: 'defaultItems-1',
+                            name: 'defaultItems',
+                            attrs: {
+                                className: 'default'
+                            },
+                            data: {
+                                createdAt: '20140515092039'
+                            },
+                            children: [
+                                {
+                                    uid: 'item-1',
+                                    name: 'item',
+                                    attrs: {
+                                        className: 'item'
+                                    },
+                                    children: [
+                                        {
+                                            uid: 'button-1',
+                                            name: 'likeButton',
+                                            likeId: '82942934294',
+                                            attrs: {
+                                                className: 'like'
+                                            }
+                                        }   
+                                    ],
+                                    data: {
+                                        itemId: '239879342089304582304',
+                                        author: 'Brian Long',
+                                        time: '201405161129',
+                                        like: '1548'
+                                    }
+                                },
+                                {
+                                    uid: 'item-2',
+                                    name: 'item',
+                                    attrs: {
+                                        className: 'item'
+                                    },
+                                    data: {
+                                        itemId: '304582304',
+                                        author: 'B Long',
+                                        time: '20105161129',
+                                        like: '148'
+                                    },
+                                    children: [
+                                        {
+                                            uid: 'button-2',
+                                            name: 'likeButton',
+                                            likeId: '908203842042',
+                                            attrs: {
+                                                className: 'like'
+                                            }
+                                        }   
+                                    ]
+                                },
+                                {
+                                    uid: 'item-3',
+                                    name: 'item',
+                                    attrs: {
+                                        className: 'item'
+                                    },
+                                    children: [
+                                        {
+                                            uid: 'button-3',
+                                            name: 'likeButton',
+                                            likeId: '294829304242',
+                                            attrs: {
+                                                className: 'like'
+                                            }
+                                        }   
+                                    ],
+                                    data: {
+                                        itemId: '2398',
+                                        author: 'Brian asdfasLong',
+                                        time: '201405161129',
+                                        like: '154'
+                                    }
+                                }
+                            ]
+                        }
+                    };
+                    // return void defer.reject('error, fuck!');
+                     return void defer.reject(test_json);
                 }
 
                 var responseData = JSON.parse(jqXHR.responseText);
@@ -282,12 +388,18 @@ H.views.Items = H.View.extend({
                 self.appendSibling(responseViewData);
                 console.log(self); 
             },
-            error: function(err) {
-                console.log('notify errors');
-            }
+            // error: function(err) {
+            //    console.log('notify errors');
+            // }
+                    error: function(data) {
+                            // need to a method that replace current whole subview of some view
+                            // instead of just append views 
+                             self.replaceEle(data.html);
+                             self.replaceView(data.view);
+                    }
         });
 
-        console.log(picResource);
+        // console.log(picResource);
 
         e.preventDefault();
         return false;
@@ -300,7 +412,7 @@ H.views.Items = H.View.extend({
 // view squareItems inherits from H.views.Items
 H.views.squareItems = H.views.Items.extend({
     events: {
-        'click .img-overlay': 'checkOutPic'
+        'click .content': 'checkOutPic'
     }
 });
 

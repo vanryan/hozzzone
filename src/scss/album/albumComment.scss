@@ -1,0 +1,80 @@
+.albumComment {
+    margin-bottom: 30px;
+}
+
+
+.commentAdd {
+    text-align: right;
+    margin-bottom: 50px;
+    textarea {
+        border: $albumCommentTextareaBorder solid #ddd;
+        text-align: left;
+        width: $albumCommentTextareaWidth;
+        height: 100px;
+        padding: $albumCommentTextareaPadding;
+    }
+    .add {
+        padding: 4px 8px;
+    }
+}
+
+.commentBox {
+    .commentItem {
+        margin-bottom: 20px; 
+    }
+}
+
+.commentMain {
+    overflow: hidden;
+}
+
+.commenterAvatar {
+    float: left;
+}
+
+.comment {
+    float: right;
+    padding-top: 8px;
+    width: $albumComment;
+    min-height: 52px;
+    position: relative;
+    
+    .reply {
+        position: absolute; 
+        bottom: 10px;
+        right: 5px;
+        font-size: 14px;
+        visibility: hidden;
+    }
+}
+
+.commentMain:hover .reply {
+    visibility: visible;
+}
+.commentReply:hover .reply {
+    visibility: visible;
+}
+
+.commentHead {
+    margin-bottom: 5px;
+}
+.commentBody {
+    padding-right: 50px;
+}
+
+.commentReplyList {
+    margin-left: $albumCommentReplyListMarginLeft;
+    ul {
+        border: 1px solid #333;
+        border-radius: 5px;
+        padding: 18px 13px;
+    }
+}
+
+.commentReply {
+    overflow: hidden;
+    .comment {
+        width: $albumReplyComment;
+    }
+}
+

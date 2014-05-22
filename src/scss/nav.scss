@@ -1,0 +1,55 @@
+#nav {
+    z-index: 1000;
+    position: fixed;
+    left: 0;
+    top: 40px;
+    width: 120px;
+    .user {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        .avatar {
+            float: left;
+            img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        .settings {
+            float: left;
+            margin-right: 100px; 
+            ul {
+                display: none;
+            }
+        }
+    }
+    .navigate {
+        margin-bottom: 20px;
+        li {
+            font-size: $nav-font;
+            margin-bottom: 10px;
+            width: 100px;
+            text-align: center;
+        }
+        ul li a {
+            display: block;
+            color: $navLinkColor;
+            border-radius: 0 3px 3px 0;
+            padding: 8px 12px;
+            border: 1px solid $sub-color; 
+            border-left-width: 0;
+        }
+        ul.category {
+            margin-top: 10px;
+        }
+        ul.category li a {
+            display: inline-block;
+            margin: 0 auto;
+            border-radius: 3px;
+            border: 0;
+            padding: 2px 4px;
+            background: $sub-color;
+            color: $navCategoryLinksColor;
+        }
+    }
+}

@@ -1,8 +1,7 @@
 /*!
  * hozzz
- * @author Teng Long
  * @version 0.0.0
- * @time 2014-05-17 16:29
+ * @time 2014-05-22 21:41
  */
 
 body, html {
@@ -27,6 +26,7 @@ a {
 body {
   background: white;
   color: #5e5e5e;
+  font-size: 14px;
 }
 
 a {
@@ -34,24 +34,47 @@ a {
 }
 
 .outer-box {
-  margin: 0 auto;
-  width: 1180px;
+  width: 100%;
   position: relative;
+  border-top: 8px solid #999;
+}
+
+#main-box .default, #main-box .square, #main-box .album {
+  margin: 0 auto;
+}
+
+#main-box {
+  padding-top: 33px;
+}
+#main-box .default {
+  width: 690px;
+}
+#main-box .square {
+  width: 921px;
+  background: #dddddd;
+}
+#main-box .album {
+  width: 584px;
 }
 
 #nav {
-  /* position: fixed; */
-  /* left: 0; */
-  /* top: 0; */
-  float: left;
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  top: 40px;
   width: 120px;
 }
 #nav .user {
-  margin-bottomt: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
   overflow: hidden;
 }
 #nav .user .avatar {
   float: left;
+}
+#nav .user .avatar img {
+  width: 60px;
+  height: 60px;
 }
 #nav .user .settings {
   float: left;
@@ -71,9 +94,11 @@ a {
 }
 #nav .navigate ul li a {
   display: block;
-  border-radius: 3px;
-  padding: 5px 12px;
+  color: #5e5e5e;
+  border-radius: 0 3px 3px 0;
+  padding: 8px 12px;
   border: 1px solid #dddddd;
+  border-left-width: 0;
 }
 #nav .navigate ul.category {
   margin-top: 10px;
@@ -81,179 +106,19 @@ a {
 #nav .navigate ul.category li a {
   display: inline-block;
   margin: 0 auto;
+  border-radius: 3px;
+  border: 0;
   padding: 2px 4px;
   background: #dddddd;
-}
-
-#main-box {
-  padding-top: 33px;
-}
-#main-box .default {
-  margin: 0 290px 0 200px;
-  background: blue;
-}
-#main-box .default .item {
-  margin-bottom: 54px;
-  overflow: hidden;
-}
-#main-box .default .item .avatar {
-  float: left;
-  margin-top: 10px;
-  width: 80px;
-  text-align: center;
-}
-#main-box .default .item .avatar img {
-  width: 80px;
-  height: 80px;
-}
-#main-box .default .item .avatar .like {
-  color: #ccc;
-}
-#main-box .default .item .content {
-  width: 570px;
-  margin-left: 98px;
-  border: 1px solid #000;
-  padding: 10px;
-}
-#main-box .default .item .content .front {
-  width: 540px;
-  margin: 0 auto;
-  text-align: center;
-}
-#main-box .default .item .content .front a img {
-  width: 540px;
-  height: 480px;
-}
-#main-box .square {
-  margin: 0 260px 0 170px;
-  background: #dddddd;
-}
-#main-box .square .item {
-  display: inline-block;
-  width: 230px;
-  height: 300px;
-  background: red;
-  margin: 0 10px 20px 10px;
-  vertical-align: top;
-}
-#main-box .square .item .img-overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-#main-box .square .item .img-overlay .shadow {
-  opacity: 0.3;
-  width: 210px;
-  height: 50px;
-  padding: 10px;
-  background: #000;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-#main-box .square .item .content {
-  position: relative;
-  width: 230px;
-  height: 250px;
-  background: yellow;
-  margin: 0;
-  border: 0;
-  padding: 0;
-}
-#main-box .square .item .info {
-  height: 50px;
-  padding: 0 10px;
-  overflow: hidden;
-  text-align: left;
-  line-height: 50px;
-}
-#main-box .square .item .info .avatar {
-  float: right;
-  margin: 0;
-  width: auto;
-  cursor: pointer;
-}
-#main-box .square .item .info .avatar img {
-  width: 35px;
-  height: 35px;
-  border-radius: 35px;
-  vertical-align: middle;
-}
-#main-box .album {
-  margin: 0 290px 0 200px;
-  background: #efefef;
-}
-#main-box .album .albumInfo {
-  text-align: center;
-}
-#main-box .album .albumInfo .avatar {
-  margin: 0 auto;
-  width: 80px;
-  cursor: pointer;
-}
-#main-box .album .albumInfo .avatar img {
-  margin-bottom: 5px;
-  height: 80px;
-  width: 80px;
-}
-#main-box .album .albumInfo .avatar span {
-  display: block;
-}
-#main-box .album .albumInfo .subscribe {
-  padding-left: 40px;
-  line-height: 30px;
-  background: url() center left no-repeat;
-  display: inline-block;
-  cursor: pointer;
-}
-#main-box .album .albumContent {
-  padding: 0 100px;
-}
-#main-box .album .albumContent .item {
-  text-align: center;
-  padding: 15px 0 30px 0;
-  border-bottom: 1px solid red;
-}
-#main-box .album .albumContent .imgWrapper {
-  display: inline-block;
-  position: relative;
-}
-#main-box .album .albumContent .imgWrapper img {
-  display: block;
-}
-#main-box .album .albumContent .imgWrapper .imgMeta {
-  text-align: center;
-  height: 30px;
-  width: 100%;
-  background: red;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-#main-box .album .albumContent .imgWrapper .imgMeta .rehoz {
-  background: #000;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-#main-box .album .albumContent .imgWrapper .collect {
-  border-radius: 5px;
-  display: inline-block;
-  background: blue;
-  padding: 4px 12px;
-}
-#main-box .album .albumContent .imgTitle {
-  text-align: center;
+  color: #7f7f7f;
 }
 
 .rightBar {
+  z-index: 1000;
+  position: fixed;
+  top: 60px;
+  right: 0;
   width: 210px;
-  float: right;
-}
-.rightBar .viewer {
-  padding-top: 20px;
 }
 .rightBar .viewer li {
   width: 25px;
@@ -301,10 +166,266 @@ a {
   cursor: pointer;
 }
 .rightBar .search-text {
+  width: 70px;
   margin-top: 40px;
   border: 1px solid #999;
   padding: 10px 30px 10px 10px;
-  background: url(../img/search.png) 180px center no-repeat;
+  background: url(../img/search.png) 80px center no-repeat;
+}
+
+.default .item {
+  margin-bottom: 54px;
+  overflow: hidden;
+}
+.default .item .avatar {
+  float: left;
+  margin-top: 10px;
+  width: 80px;
+  text-align: center;
+}
+.default .item .avatar img {
+  width: 80px;
+  height: 80px;
+}
+.default .item .avatar .like {
+  color: #ccc;
+}
+.default .item .content {
+  width: 570px;
+  margin-left: 98px;
+  border: 1px solid #000;
+  padding: 10px;
+}
+.default .item .content .front {
+  width: 540px;
+  margin: 0 auto;
+  text-align: center;
+}
+.default .item .content .front a img {
+  width: 540px;
+  height: 480px;
+}
+
+.square .item {
+  display: inline-block;
+  width: 270px;
+  height: 320px;
+  margin: 0 37px 20px 0;
+  vertical-align: top;
+}
+.square .item:hover .img-overlay {
+  opacity: 1;
+}
+.square .item .img-overlay {
+  opacity: 0;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 220px;
+  padding: 25px;
+  color: #f2f2f2;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 300ms;
+  -moz-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+.square .item .shadow {
+  opacity: 0.3;
+  width: 220px;
+  height: 50px;
+  padding: 25px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.square .item .content {
+  position: relative;
+  height: 270px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+.square .item .content img {
+  width: 270px;
+  height: 270px;
+}
+.square .item .info {
+  height: 50px;
+  padding: 0 10px 0 24px;
+  border: 1px solid #ddd;
+  border-top: 0;
+  overflow: hidden;
+  text-align: left;
+  line-height: 50px;
+}
+.square .item .avatar {
+  float: right;
+  margin: 0;
+  width: 100px;
+  cursor: pointer;
+  color: #999999;
+}
+.square .item .avatar img {
+  margin-right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  vertical-align: middle;
+}
+
+.album .albumInfo {
+  text-align: center;
+}
+.album .albumInfo .avatar {
+  margin: 0 auto;
+  width: 80px;
+  cursor: pointer;
+}
+.album .albumInfo .avatar img {
+  margin-bottom: 5px;
+  height: 80px;
+  width: 80px;
+}
+.album .albumInfo .avatar span {
+  display: block;
+}
+.album .albumInfo .subscribe {
+  padding-left: 40px;
+  line-height: 30px;
+  background: url() center left no-repeat;
+  display: inline-block;
+  cursor: pointer;
+}
+.album .albumContent .item {
+  text-align: center;
+  padding: 15px 0 30px 0;
+  border-bottom: 1px solid red;
+}
+.album .albumContent .imgWrapper {
+  display: inline-block;
+  background: #efefef;
+  position: relative;
+}
+.album .albumContent .imgWrapper img {
+  display: block;
+}
+.album .albumContent .imgWrapper .imgMeta {
+  text-align: center;
+  height: 30px;
+  width: 100%;
+  background: red;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.album .albumContent .imgWrapper .imgMeta .rehoz {
+  background: #000;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.album .albumContent .imgWrapper .collect {
+  border-radius: 5px;
+  display: inline-block;
+  background: blue;
+  padding: 4px 12px;
+}
+.album .albumContent .imgTitle {
+  text-align: center;
+}
+
+.albumAct {
+  margin: 30px 0;
+}
+.albumAct li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.albumComment {
+  margin-bottom: 30px;
+}
+
+.commentAdd {
+  text-align: right;
+  margin-bottom: 50px;
+}
+.commentAdd textarea {
+  border: 1px solid #dddddd;
+  text-align: left;
+  width: 562px;
+  height: 100px;
+  padding: 10px;
+}
+.commentAdd .add {
+  padding: 4px 8px;
+}
+
+.commentBox .commentItem {
+  margin-bottom: 20px;
+}
+
+.commentMain {
+  overflow: hidden;
+}
+
+.commenterAvatar {
+  float: left;
+}
+
+.comment {
+  float: right;
+  padding-top: 8px;
+  width: 509px;
+  min-height: 52px;
+  position: relative;
+}
+.comment .reply {
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  font-size: 14px;
+  visibility: hidden;
+}
+
+.commentMain:hover .reply {
+  visibility: visible;
+}
+
+.commentReply:hover .reply {
+  visibility: visible;
+}
+
+.commentHead {
+  margin-bottom: 5px;
+}
+
+.commentBody {
+  padding-right: 50px;
+}
+
+.commentReplyList {
+  margin-left: 74px;
+}
+.commentReplyList ul {
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 18px 13px;
+}
+
+.commentReply {
+  overflow: hidden;
+}
+.commentReply .comment {
+  width: 429px;
 }
 
 /*# sourceMappingURL=main.css.map */

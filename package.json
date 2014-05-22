@@ -1,0 +1,15 @@
+{
+  "name": "hozzz",
+  "version": "0.0.0",
+  "description": "An image sharing website",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-autoprefixer": "~0.7.3",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-sass": "~0.7.3",
+    "grunt-contrib-uglify": ">0.2.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-includes": "^0.4.4"
+  }
+}

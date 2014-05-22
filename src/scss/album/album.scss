@@ -1,0 +1,76 @@
+.album {
+    .albumInfo {
+        text-align: center;
+
+        .avatar {
+            margin: 0 auto;
+            width: 80px;
+            cursor: pointer;
+            img {
+                margin-bottom: 5px;
+                height: 80px;
+                width: 80px;
+            }
+            span {
+                display: block; 
+            }
+        }
+
+        .subscribe {
+            padding-left: 40px;
+            line-height: 30px;
+            background: url() center left no-repeat;
+            display: inline-block;
+            cursor: pointer;
+        }
+    }
+
+    .albumContent {
+        .item {
+            text-align: center;
+            padding: 15px 0 30px 0;
+            border-bottom: 1px solid red;
+        }
+        .imgWrapper {
+            display: inline-block;
+        background: #efefef;
+            position: relative;
+            img {
+                display: block;
+            }
+            .imgMeta {
+                text-align: center;
+                height: 30px;
+                width: 100%;
+                background: red;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                .rehoz {
+                    background: #000;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;  
+                }
+            }
+            .collect {
+                border-radius: 5px;
+                display: inline-block;
+                background: blue;
+                padding: 4px 12px;
+            }
+        }
+        .imgTitle {
+            text-align: center;
+        }
+        
+    }
+}
+
+.albumAct {
+    margin: 30px 0;
+    li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+}
