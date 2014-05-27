@@ -1,15 +1,19 @@
 .album {
     .albumInfo {
+        width: $albumInfoWidth;
+        border-bottom: 1px solid #999;
+        padding-bottom: $albumInfoPaddingBottom;
+        margin: 0 auto $albumInfoMarginBottom;
         text-align: center;
 
         .avatar {
-            margin: 0 auto;
-            width: 80px;
+            margin: 0 auto $albumAvatarBoxMarginBottom;
+            width: 60px;
             cursor: pointer;
             img {
-                margin-bottom: 5px;
-                height: 80px;
-                width: 80px;
+                margin-bottom: $albumAvatarMarginBottom;
+                height: 60px;
+                width: 60px;
             }
             span {
                 display: block; 
@@ -17,9 +21,9 @@
         }
 
         .subscribe {
-            padding-left: 40px;
+            padding-left: 25px;
             line-height: 30px;
-            background: url() center left no-repeat;
+            background: url(../img/heart.png) center left no-repeat;
             display: inline-block;
             cursor: pointer;
         }
@@ -28,12 +32,13 @@
     .albumContent {
         .item {
             text-align: center;
-            padding: 15px 0 30px 0;
+            padding-bottom: $albumItemPaddingBottom;
             border-bottom: 1px solid red;
+            margin-bottom: $albumItemMarginBottom;
         }
         .imgWrapper {
             display: inline-block;
-        background: #efefef;
+            background: #efefef;
             position: relative;
             img {
                 display: block;
@@ -42,7 +47,6 @@
                 text-align: center;
                 height: 30px;
                 width: 100%;
-                background: red;
                 position: absolute;
                 bottom: 0;
                 left: 0;
@@ -56,21 +60,24 @@
             .collect {
                 border-radius: 5px;
                 display: inline-block;
-                background: blue;
+                color: #fff;
+                background: #333;
+                background: rgba(98, 98, 98, 0.6);
                 padding: 4px 12px;
             }
         }
         .imgTitle {
             text-align: center;
+            margin-top: $albumItemTitleMarginTop;
         }
         
     }
 }
 
 .albumAct {
-    margin: 30px 0;
+    margin: $albumActMarginTop 0 $albumActMarginBottom;
     li {
         display: inline-block;
-        margin-right: 10px;
+        margin-right: $albumActLiMarginRight;
     }
 }

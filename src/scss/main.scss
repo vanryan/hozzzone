@@ -5,10 +5,9 @@ $nav-font: 14px;
 $primary-color: #fff;
 $sub-color: #ddd;
 $box-color: blue;
-$font-color: #5e5e5e;
+$font-color: #999;
 
 $main-box-padding-top: 33px;
-$main-box-default-item-margin-bottom: 54px;
 
 
 // nav
@@ -22,13 +21,28 @@ $navCategoryLinksColor: #7f7f7f;
 $searchTextWidth: 70px;
 $searchTextPaddingTop: 10px;
 $searchTextPaddingLeft: 10px;
-$searchTextPaddingRight: 30px;
+$searchTextPaddingRight: 33px;
 $searchTextIconToLeft: $searchTextWidth + $searchTextPaddingLeft;
 
 
 
 // default viewer
-$defaultViewerWidth: 690px;
+$defaultItemTitleMarginTop: 17px;
+$defaultItemLikeMarginTop: 12px;
+$defaultItemPeekMarginTop: 19px;
+$defaultItemFrontWidth: 530px;
+$defaultItemMarginBottom: 54px;
+$defaultAvatarWidth: 60px;
+$defaultAvatarMarginRight: 40px;
+$defaultViewerWidth: $defaultAvatarWidth + $defaultAvatarMarginRight + $defaultItemFrontWidth;
+
+
+// default viewer sub.html
+$defaultItemPostInfoMarginTop: 7px;
+$defaultItemPostActMarginBottom: 14px;
+$defaultItemPostTimeMarginBottom: 16px;
+$defaultItemPostContentMarginLeft: 18px;
+
 
 
 // square viewer
@@ -51,23 +65,37 @@ $squareItemAvatarNameColor: #999;
 // album
 
 $albumViewerWidth: 584px;
+$albumInfoWidth: 180px;
+$albumInfoPaddingBottom: 10px;
+$albumInfoMarginBottom: 20px;
+$albumAvatarMarginBottom: 12px;
+$albumAvatarBoxMarginBottom: 3px;
+$albumItemMarginBottom: 25px;
+$albumItemPaddingBottom: 50px;
+$albumItemTitleMarginTop: 14px;
+$albumActMarginTop: 31px;
+$albumActMarginBottom: 28px;
+$albumActLiMarginRight: 18px;
 
 
 
 
 
 // albumComment
+$albumCommentAddMarginBottom: 56px;
+$albumCommentTextareaMarginBottom: 12px;
 $albumCommentTextareaBorder: 1px;
 $albumCommentTextareaPadding: 10px;
 $albumCommentTextareaWidth: $albumViewerWidth - 2 * ($albumCommentTextareaPadding + $albumCommentTextareaBorder); 
 
-$albumCommenterAvatarWidth: 60px;
-$albumReplyCommenterAvatarWidth: 40px;
+$albumCommenterAvatarWidth: 50px;
+$albumCommentHeadMarginBottom: 5px;
+$albumReplyCommenterAvatarWidth: 30px;
 $albumCommenterAvatarMarginRight: 15px;
 
-$albumCommentReplyListMarginLeft: 74px;
-$albumCommentReplyListPaddingLeft: 13px;
-$albumCommentReplyListPaddingTop: 18px;
+$albumCommentReplyListMarginLeft: 64px;
+$albumCommentReplyListPaddingLeft: 14px;
+$albumCommentReplyListPaddingTop: 20px;
 
 $albumComment: $albumViewerWidth - $albumCommenterAvatarWidth - $albumCommenterAvatarMarginRight;
 $albumReplyComment: $albumViewerWidth - $albumCommentReplyListMarginLeft - $albumReplyCommenterAvatarWidth - $albumCommenterAvatarMarginRight - 2 * $albumCommentReplyListPaddingLeft;
@@ -97,28 +125,32 @@ a {
 .outer-box {
     width: 100%;
     position: relative;
-    border-top: 8px solid #999;
 }
 
 
 
 %viewer {
     margin: 0 auto;
+  //  position: relative;
+   // top: 0;
 }
 
 
 #main-box {
     padding-top: $main-box-padding-top;
+//     border-top: 8px solid #999;
 
     .default {
         @extend %viewer; 
         width: $defaultViewerWidth;
+ //       left: -55px;
     }
     
     .square {
         @extend %viewer; 
         width: $squareViewerWidth;
-        background: $sub-color;
+        // background: $sub-color;
+//        left: -37px;
     }
 
     .album {
@@ -128,6 +160,38 @@ a {
 }
 
 
+@-webkit-keyframes slideUp {
+    0% {
+        opacity:0;
+        -webkit-transform:translateY(15px);
+    }
+    100%{
+        opacity:1;
+        -webkit-transform:translateY(0);
+    }
+}
+
+@-moz-keyframes slideUp{
+    0% {
+        opacity:0;
+        -moz-transform:translateY(15px);
+    }
+    100% {
+        opacity:1;
+        -moz-transform:translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        opacity:0;
+        transform:translateY(15px);
+    }
+    100% {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
 @import "nav";
 @import "rightBar";
@@ -135,3 +199,4 @@ a {
 @import "viewer/square";
 @import "album/album";
 @import "album/albumComment";
+@import "mq/mq";

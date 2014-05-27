@@ -7,19 +7,21 @@
 </head>
 <body>
     <div class="outer-box" id="app">
-        include "nav.html"
-        include "sidebar.html"
+        <div class="bars">
+            include "nav.html"
+            include "sidebar.html"
+        </div>
         <div id="main-box">
-            <div class="album">
+            <div class="album" id="Album">
                 <div class="albumInfo">
                     <div class="avatar">
-                        <img src="../src/img/avatar.png" alt="">
+                        <img src="/hozzzone/public/img/long.jpg" alt="">
                         <span>client</span>
                     </div>
-                    <a class="subscribe">关注</a>
+                    <a class="subscribe" id="subscribeBtn">关注</a>
                 </div>
                 <div class="albumContent">
-                    <div class="item">
+                    <div class="item" id="item-1">
                         <div class="imgWrapper">
                             <img src="" alt="" width=300 height=200>
                             <div class="imgMeta">
@@ -31,9 +33,9 @@
                             <span>item1</span>
                         </div>
                     </div>
-                    <div class="item">
+                    <div class="item" id="item-2">
                         <div class="imgWrapper">
-                            <img src="" alt="" width=400 height=300>
+                            <img src="/hozzzone/public/img/bg.jpg" alt="" width=400 height=300>
                             <div class="imgMeta">
                                 <a class="collect" href="">collect</a>
                                 <a class="rehoz" href="">rehoz</a>
@@ -43,7 +45,7 @@
                             <span>item2</span>
                         </div>
                     </div>
-                    <div class="item">
+                    <div class="item" id="item-3">
                         <div class="imgWrapper">
                             <img src="" alt="" width=280 height=440>
                             <div class="imgMeta">
@@ -67,14 +69,14 @@
                     <div class="commentAdd">
                         <form action="">
                             <textarea id="" name="" cols="30" rows="10"></textarea>
-                            <button class="add">加上去</button>
+                            <button class="add" id="commentBtn">写上去</button>
                         </form>
                     </div>
                     <ul class="commentBox">
                         <li class="commentItem">
                             <div class="commentMain">
                                 <div class="commenterAvatar">
-                                    <img src="" alt="" width=60 height=60>
+                                    <img src="" alt="">
                                 </div>
                                 <div class="comment">
                                     <div class="commentHead">
@@ -90,7 +92,7 @@
                                 <ul>
                                     <li class="commentReply">
                                         <div class="commenterAvatar">
-                                            <img src="" alt="" width=40 height=40>
+                                            <img src="" alt="">
                                         </div>
                                         <div class="comment">
                                             <div class="commentHead">
@@ -118,50 +120,31 @@
     <script id="js-init">
 
 
-        var view_json_user = {
-            
-            
-            };
-
-        var view_json_square = {
-            html: '<ul class="square" id="squareItems-1"> <li class="item" id="item-1"> <div class="content"> <a href=""> <div class="img-overlay"> <div class="shadow"></div> <span class="title">时尚元素</span>  </div> <img src="../src/img/a_min.png" alt=""> </a>      </div> <div class="info"> <a class="like" id="button-1" href="#"><span>1054</span></a> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">Long</span> </div> </div> </li><li class="item" id="item-2"> <div class="content"> <a href=""> <div class="img-overlay"> <div class="shadow"></div> <span class="title">男士</span>  </div> <img src="../src/img/a_min.png" alt=""> </a>      </div> <div class="info"> <a class="like" id="button-2" href="#"><span>154</span></a> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">jia</span> </div> </div> </li><li class="item" id="item-3"> <div class="content"> <a href=""> <div class="img-overlay"> <div class="shadow"></div> <span class="title">手提包</span>  </div> <img src="../src/img/a_min.png" alt=""> </a>      </div> <div class="info"> <a class="like" id="button-3" href="#"><span>54</span></a> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">zhao</span> </div> </div> </li><li class="item"> </li><li class="item"> </li><li class="item"> </li> </ul>',
+        var album_json = {
             modules: {
                 uid: 'app',
                 name: 'app',
                 children: [
                     {
-                        uid: 'squareItems-1',
-                        name: 'squareItems',
+                        uid: 'Album',
+                        name: 'Album',
                         attrs: {
-                            className: 'square'
+                            className: 'album'
                         },
                         data: {
                             createdAt: '20140515092039'
                         },
                         children: [
                             {
+                                uid: 'subscribeBtn',
+                                name: 'subscribeBtn',
+                            },
+                            {
                                 uid: 'item-1',
                                 name: 'item',
                                 attrs: {
                                     className: 'item'
                                 },
-                                children: [
-                                    {
-                                        uid: 'button-1',
-                                        name: 'likeButton',
-                                        likeId: '82942934294',
-                                        attrs: {
-                                            className: 'like'
-                                        }
-                                    }   
-                                ],
-                                data: {
-                                    itemId: '239879342089304582304',
-                                    author: 'Brian Long',
-                                    authorId: '2340959034',
-                                    time: '201405161129',
-                                    like: '1548'
-                                }
                             },
                             {
                                 uid: 'item-2',
@@ -169,23 +152,6 @@
                                 attrs: {
                                     className: 'item'
                                 },
-                                data: {
-                                    itemId: '304582304',
-                                    author: 'B Long',
-                                    authorId: '2342397829347892',
-                                    time: '20105161129',
-                                    like: '148'
-                                },
-                                children: [
-                                    {
-                                        uid: 'button-2',
-                                        name: 'likeButton',
-                                        likeId: '908203842042',
-                                        attrs: {
-                                            className: 'like'
-                                        }
-                                    }   
-                                ]
                             },
                             {
                                 uid: 'item-3',
@@ -193,23 +159,10 @@
                                 attrs: {
                                     className: 'item'
                                 },
-                                children: [
-                                    {
-                                        uid: 'button-3',
-                                        name: 'likeButton',
-                                        likeId: '294829304242',
-                                        attrs: {
-                                            className: 'like'
-                                        }
-                                    }   
-                                ],
-                                data: {
-                                    itemId: '2398',
-                                    author: 'Brian asdfasLong',
-                                    authorId: '239880345',
-                                    time: '201405161129',
-                                    like: '154'
-                                }
+                            },
+                            {
+                                uid: 'commentBtn',
+                                name: 'commentBtn'    
                             }
                         ]
                     },
@@ -262,10 +215,7 @@
             }
         };
 
-        H.init(view_json_user);
-            
-        // H.init(view_json_square);
-        
+        H.init(album_json);
 
     </script>
 </body>

@@ -4,12 +4,20 @@
     top: 60px;
     right: 0;
     width: 210px;
+    
+    .layout {
+        overflow: hidden;
+    }
 
     .viewer {
+        float: right;
+        margin-right: 50px;
         li {
             width: 25px;
             padding: 10px 0 10px $viewer-left-margin;
             border-left: 1px solid transparent;
+            cursor: pointer;
+
             &.active {
                 border-left: 1px solid #a5a5a5;
             }
@@ -43,10 +51,10 @@
     }
     
     .add {
-        margin-top: $rightBar-add-margin-top;
         text-indent: -9999px;
         overflow: hidden;
-        margin-left: 18px;
+        float: right;
+        margin: 30px 35px 30px 0;
         width: 52px;
         height: 49px;
         background: url(../img/upload.png) 0 0 no-repeat;
@@ -54,12 +62,40 @@
         cursor: pointer;
     }
     
+    .search {
+        clear: right;
+    }
+    
+    .searchBox {
+        overflow: hidden;
+        position: relative;
+    }
+    
     .search-text {
+        float: right;
+        margin-right: 8px;
         width: $searchTextWidth;
-        margin-top: $rightBar-search-margin-top;
         border: 1px solid #999;
         padding: $searchTextPaddingTop $searchTextPaddingRight $searchTextPaddingTop $searchTextPaddingLeft; 
-        background: url(../img/search.png) $searchTextIconToLeft center no-repeat;
+    }
+
+    .search-img {
+        display: block;
+        width: 33px;
+        height: 37px;
+        background: url(../img/search.png) no-repeat 8px center;
+        position: absolute;
+        top: 1px;
+        right: 9px; 
+        cursor: pointer;
+    }
+
+    .users {
+        padding-left: 60px;
+        margin-top: 30px;
     }
 }
 
+#backToTop {
+    margin-left: 60px;
+}

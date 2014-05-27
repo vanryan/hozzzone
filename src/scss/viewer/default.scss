@@ -2,38 +2,92 @@
 .default {
 
     .item {
-        margin-bottom: $main-box-default-item-margin-bottom;    
+        margin-bottom: $defaultItemMarginBottom;    
         overflow: hidden;
+    }
 
-        .avatar {
-            float: left;
-            margin-top: 10px;
-            width: 80px;
+    // for the post (sub.html)
+    .postInfo {
+        margin-top: $defaultItemPostInfoMarginTop;
+        .act {
+            margin-bottom: $defaultItemPostActMarginBottom;
+        }
+        .time {
+            margin-bottom: $defaultItemPostTimeMarginBottom;
+        }
+        .postContent {
+            margin-left: $defaultItemPostContentMarginLeft; 
+        }
+    }
+
+    .avatar {
+        float: left;
+        width: $defaultAvatarWidth;
+        text-align: center;
+
+        img {
+            width: $defaultAvatarWidth; 
+            height: $defaultAvatarWidth;
+        }
+
+        .like {
+            color: #ccc;
+        }
+    }
+
+    .content {
+        width: $defaultItemFrontWidth;
+        margin-left: $defaultAvatarWidth + $defaultAvatarMarginRight;
+        .front {
+            width: $defaultItemFrontWidth;
+            margin: 0 auto;
             text-align: center;
-
+        }
+        .calbum {
+            display: block;
+            line-height: 0;
             img {
-                width: 80px; 
-                height: 80px;
+                width: $defaultItemFrontWidth;
             }
+        }
 
-            .like {
-                color: #ccc;
-            }
+        .title {
+            margin: $defaultItemTitleMarginTop 0 $defaultItemLikeMarginTop 0;
         }
-        .content {
-            width: 570px;
-            margin-left: 98px;
-            border: 1px solid #000;
-            padding: 10px;
-            .front {
-                width: 540px;
-                margin: 0 auto;
-                text-align: center;
-            }
-            .front a img {
-                width: 540px;
-                height: 480px;
-            }
+    }
+
+    .seen .peek {
+        display: block;
+        .sub-item {
+            -webkit-animation: slideUp .1s ease-out .26s;
+            -moz-animation: slideUp .1s ease-out .26s;
+            animation: slideUp .1s ease-out .26s;
+            -webkit-animation-fill-mode: backwards;
+            -moz-animation-fill-mode: backwards;
+            animation-fill-mode: backwards;
         }
+    }
+
+
+    .peek {
+        display: none;
+        overflow: hidden;
+        margin-top: $defaultItemPeekMarginTop;
+        padding: 0 1px;
+    }
+
+    .sub-item {
+
+        a {
+            display: block;
+            line-height: 0;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+        }
+        width: 100px;
+        margin: 0 16px 18px 16px;
+        float: left;
     }
 }

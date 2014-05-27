@@ -1,4 +1,4 @@
-<div id="rightBar-1" class="rightBar">
+<div id="rightBar" class="rightBar">
     <div class="layout">
         <ul class="viewer" id="viewLayout">
             <li class="default" id="layoutButton-1"><a href="#"></a></li>

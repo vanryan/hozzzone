@@ -1,0 +1,20 @@
+// media query
+
+.bars {
+    background: #fff;
+    border-bottom: 8px solid #999;
+    z-index: 4000;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+@media screen and (max-width: 1280px) {
+    #main-box {
+        margin-top: 120px;
+    }
+    @import "nav";
+    @import "rightBar"; 
+}
+

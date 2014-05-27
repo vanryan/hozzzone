@@ -21,14 +21,12 @@ H.loadViewConstructor = function(viewName) {
 
 // create views
 H.viewFactory = {
-    create: function(viewModule, parentEle) {
-
-        parentEle = parentEle || null;
+    create: function(viewModule) {
 
         // the parenthesis around 'H.loadViewConstructor(viewModule.name)' is very important!!!
         var view = new (H.loadViewConstructor(viewModule.name))({
             // bind this view to the element via 'uid' throught the 'id' attr
-            el: $('#' + viewModule.uid, parentEle),
+            el: $('#' + viewModule.uid),
             options: viewModule.options,
             name: viewModule.name,
             data: viewModule.data
@@ -36,16 +34,22 @@ H.viewFactory = {
 
         if(viewModule.children) {
             view.children = _.map(viewModule.children, function(item) {
-                var childView = H.viewFactory.create(item, view.$el);
+                var childView = H.viewFactory.create(item);
                 childView.parent = view;
                 view.setChildViewById(childView.cid, childView);
-                return childView;
+                return [childView.cid, childView];
             });
+
+            view.children = _.object(view.children);
+
+        } else {
+            delete view.children;
         }
 
         return view;
     },
     append: function(viewModule, parentView) {
-        parentView.children.push(H.viewFactory.create(viewModule, parentView.$el));
+        var childView = H.viewFactory.create(viewModule);
+        parentView.setChildViewById(childView.cid, childView);
     }
 };

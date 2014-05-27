@@ -1,22 +1,44 @@
 /*!
  * hozzz
  * @version 0.0.0
- * @time 2014-05-22 21:41
+ * @time 2014-05-26 23:21
  */
 
-body, html {
+/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
 }
 
-li {
-  margin: 0;
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 a {
@@ -25,18 +47,17 @@ a {
 
 body {
   background: white;
-  color: #5e5e5e;
+  color: #999999;
   font-size: 14px;
 }
 
 a {
-  color: #5e5e5e;
+  color: #999999;
 }
 
 .outer-box {
   width: 100%;
   position: relative;
-  border-top: 8px solid #999;
 }
 
 #main-box .default, #main-box .square, #main-box .album {
@@ -47,16 +68,48 @@ a {
   padding-top: 33px;
 }
 #main-box .default {
-  width: 690px;
+  width: 630px;
 }
 #main-box .square {
   width: 921px;
-  background: #dddddd;
 }
 #main-box .album {
   width: 584px;
 }
 
+@-webkit-keyframes slideUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@-moz-keyframes slideUp {
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
+}
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 #nav {
   z-index: 1000;
   position: fixed;
@@ -100,8 +153,15 @@ a {
   border: 1px solid #dddddd;
   border-left-width: 0;
 }
+#nav .navigate li.category:hover ul li {
+  display: block;
+  display: list-item;
+}
 #nav .navigate ul.category {
   margin-top: 10px;
+}
+#nav .navigate ul.category li {
+  display: none;
 }
 #nav .navigate ul.category li a {
   display: inline-block;
@@ -120,10 +180,18 @@ a {
   right: 0;
   width: 210px;
 }
+.rightBar .layout {
+  overflow: hidden;
+}
+.rightBar .viewer {
+  float: right;
+  margin-right: 50px;
+}
 .rightBar .viewer li {
   width: 25px;
   padding: 10px 0 10px 29px;
   border-left: 1px solid transparent;
+  cursor: pointer;
 }
 .rightBar .viewer li.active {
   border-left: 1px solid #a5a5a5;
@@ -155,55 +223,125 @@ a {
   background: url(../img/active_brick_view.png);
 }
 .rightBar .add {
-  margin-top: 30px;
   text-indent: -9999px;
   overflow: hidden;
-  margin-left: 18px;
+  float: right;
+  margin: 30px 35px 30px 0;
   width: 52px;
   height: 49px;
   background: url(../img/upload.png) 0 0 no-repeat;
   display: block;
   cursor: pointer;
 }
+.rightBar .search {
+  clear: right;
+}
+.rightBar .searchBox {
+  overflow: hidden;
+  position: relative;
+}
 .rightBar .search-text {
+  float: right;
+  margin-right: 8px;
   width: 70px;
-  margin-top: 40px;
   border: 1px solid #999;
-  padding: 10px 30px 10px 10px;
-  background: url(../img/search.png) 80px center no-repeat;
+  padding: 10px 33px 10px 10px;
+}
+.rightBar .search-img {
+  display: block;
+  width: 33px;
+  height: 37px;
+  background: url(../img/search.png) no-repeat 8px center;
+  position: absolute;
+  top: 1px;
+  right: 9px;
+  cursor: pointer;
+}
+.rightBar .users {
+  padding-left: 60px;
+  margin-top: 30px;
+}
+
+#backToTop {
+  margin-left: 60px;
 }
 
 .default .item {
   margin-bottom: 54px;
   overflow: hidden;
 }
-.default .item .avatar {
+.default .postInfo {
+  margin-top: 7px;
+}
+.default .postInfo .act {
+  margin-bottom: 14px;
+}
+.default .postInfo .time {
+  margin-bottom: 16px;
+}
+.default .postInfo .postContent {
+  margin-left: 18px;
+}
+.default .avatar {
   float: left;
-  margin-top: 10px;
-  width: 80px;
+  width: 60px;
   text-align: center;
 }
-.default .item .avatar img {
-  width: 80px;
-  height: 80px;
+.default .avatar img {
+  width: 60px;
+  height: 60px;
 }
-.default .item .avatar .like {
+.default .avatar .like {
   color: #ccc;
 }
-.default .item .content {
-  width: 570px;
-  margin-left: 98px;
-  border: 1px solid #000;
-  padding: 10px;
+.default .content {
+  width: 530px;
+  margin-left: 100px;
 }
-.default .item .content .front {
-  width: 540px;
+.default .content .front {
+  width: 530px;
   margin: 0 auto;
   text-align: center;
 }
-.default .item .content .front a img {
-  width: 540px;
-  height: 480px;
+.default .content .calbum {
+  display: block;
+  line-height: 0;
+}
+.default .content .calbum img {
+  width: 530px;
+}
+.default .content .title {
+  margin: 17px 0 12px 0;
+}
+.default .seen .peek {
+  display: block;
+}
+.default .seen .peek .sub-item {
+  -webkit-animation: slideUp .1s ease-out .26s;
+  -moz-animation: slideUp .1s ease-out .26s;
+  animation: slideUp .1s ease-out .26s;
+  -webkit-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
+}
+.default .peek {
+  display: none;
+  overflow: hidden;
+  margin-top: 19px;
+  padding: 0 1px;
+}
+.default .sub-item {
+  width: 100px;
+  margin: 0 16px 18px 16px;
+  float: left;
+}
+.default .sub-item a {
+  display: block;
+  line-height: 0;
+}
+.default .sub-item img {
+  width: 100px;
+  height: 100px;
 }
 
 .square .item {
@@ -282,32 +420,37 @@ a {
 }
 
 .album .albumInfo {
+  width: 180px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 10px;
+  margin: 0 auto 20px;
   text-align: center;
 }
 .album .albumInfo .avatar {
-  margin: 0 auto;
-  width: 80px;
+  margin: 0 auto 3px;
+  width: 60px;
   cursor: pointer;
 }
 .album .albumInfo .avatar img {
-  margin-bottom: 5px;
-  height: 80px;
-  width: 80px;
+  margin-bottom: 12px;
+  height: 60px;
+  width: 60px;
 }
 .album .albumInfo .avatar span {
   display: block;
 }
 .album .albumInfo .subscribe {
-  padding-left: 40px;
+  padding-left: 25px;
   line-height: 30px;
-  background: url() center left no-repeat;
+  background: url(../img/heart.png) center left no-repeat;
   display: inline-block;
   cursor: pointer;
 }
 .album .albumContent .item {
   text-align: center;
-  padding: 15px 0 30px 0;
+  padding-bottom: 50px;
   border-bottom: 1px solid red;
+  margin-bottom: 25px;
 }
 .album .albumContent .imgWrapper {
   display: inline-block;
@@ -321,7 +464,6 @@ a {
   text-align: center;
   height: 30px;
   width: 100%;
-  background: red;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -335,19 +477,22 @@ a {
 .album .albumContent .imgWrapper .collect {
   border-radius: 5px;
   display: inline-block;
-  background: blue;
+  color: #fff;
+  background: #333;
+  background: rgba(98, 98, 98, 0.6);
   padding: 4px 12px;
 }
 .album .albumContent .imgTitle {
   text-align: center;
+  margin-top: 14px;
 }
 
 .albumAct {
-  margin: 30px 0;
+  margin: 31px 0 28px;
 }
 .albumAct li {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 18px;
 }
 
 .albumComment {
@@ -356,7 +501,7 @@ a {
 
 .commentAdd {
   text-align: right;
-  margin-bottom: 50px;
+  margin-bottom: 56px;
 }
 .commentAdd textarea {
   border: 1px solid #dddddd;
@@ -364,6 +509,7 @@ a {
   width: 562px;
   height: 100px;
   padding: 10px;
+  margin-bottom: 12px;
 }
 .commentAdd .add {
   padding: 4px 8px;
@@ -380,11 +526,15 @@ a {
 .commenterAvatar {
   float: left;
 }
+.commenterAvatar img {
+  width: 50px;
+  height: 50px;
+}
 
 .comment {
   float: right;
-  padding-top: 8px;
-  width: 509px;
+  padding-top: 10px;
+  width: 519px;
   min-height: 52px;
   position: relative;
 }
@@ -413,19 +563,75 @@ a {
 }
 
 .commentReplyList {
-  margin-left: 74px;
+  margin-left: 64px;
 }
 .commentReplyList ul {
   border: 1px solid #333;
   border-radius: 5px;
-  padding: 18px 13px;
+  padding: 20px 14px;
 }
 
 .commentReply {
   overflow: hidden;
 }
 .commentReply .comment {
-  width: 429px;
+  width: 447px;
+}
+.commentReply .commenterAvatar img {
+  width: 30px;
+  height: 30px;
+}
+
+.bars {
+  background: #fff;
+  border-bottom: 8px solid #999;
+  z-index: 4000;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 1280px) {
+  #main-box {
+    margin-top: 120px;
+  }
+
+  #nav {
+    position: static;
+    width: auto;
+  }
+  #nav .user {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 20px 0;
+  }
+  #nav .navigate {
+    height: 42px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+  }
+  #nav .navigate li {
+    width: auto;
+    display: inline;
+  }
+  #nav .navigate li.category:hover ul li {
+    display: inline;
+  }
+  #nav .navigate ul.category {
+    margin: 0;
+    padding-top: 10px;
+  }
+  #nav .navigate ul li a {
+    padding: 0;
+    border: 0;
+    display: inline;
+  }
+
+  .rightBar {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

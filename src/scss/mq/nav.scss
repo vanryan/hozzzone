@@ -1,0 +1,36 @@
+#nav {
+    position: static;
+    width: auto;
+    .user {
+        vertical-align: middle;
+        // is vertical-align inheritable?
+        display: inline-block;
+        margin: 20px 0;
+    }
+    .navigate {
+        height: 42px;
+        display: inline-block;
+        margin: 0;
+        vertical-align: middle;
+        li {
+            width: auto;
+            display: inline;
+        }
+        li.category {
+            &:hover {
+                ul li {
+                    display: inline;
+                }
+            }
+        }
+        ul.category {
+            margin: 0;
+            padding-top: 10px;
+        }
+        ul li a {
+            padding: 0;
+            border: 0;
+            display: inline;
+        }
+    }
+}

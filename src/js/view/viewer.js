@@ -12,9 +12,6 @@ H.views.item = H.View.extend({
         'click .avatar': 'checkOutAuthor'
     },
     sendLikeButton: function(e) {
-        console.log(e.currentTarget === this);
-        console.log($(e.currentTarget).html());
-        console.log(this.data.like + ' ' + this.data.itemId);
         return false;
     },
     checkOutAuthor: function(e) {
@@ -39,8 +36,7 @@ H.views.Items = H.View.extend({
     checkOutPic: function(e) {
 
         var self = this;
-        
-        console.log($(e.currentTarget).html());
+
         this.showLoading(); 
     
         var picResource = H.resourceFactory('HozzzAlbum', {fuck: 'you'});
@@ -48,20 +44,15 @@ H.views.Items = H.View.extend({
         picResource = picResource.get({
             success: function(responseViewData) {
                 self.appendSibling(responseViewData);
-                console.log(self); 
             },
-            // error: function(err) {
-            //    console.log('notify errors');
-            // }
-                    error: function(data) {
-                            // need to a method that replace current whole subview of some view
-                            // instead of just append views 
-                             self.replaceEle(data.html);
-                             self.replaceView(data.view);
-                    }
+            error: function(data) {
+                // need a method that replace current whole subview of some view
+                // instead of just append views 
+                self.replaceEle(data.html);
+                self.replaceView(data.view);
+            }
         });
 
-        // console.log(picResource);
 
         e.preventDefault();
         return false;
@@ -83,13 +74,14 @@ H.views.squareItems = H.views.Items.extend({
 H.views.defaultItems = H.views.Items.extend({
     events: {
         'click .front': 'checkOutPic',
-        'mouseenter .front': 'dropDownAlbum'
+        'mouseenter .front': 'dropDownAlbum',
     },
     dropDownAlbum: function(e) {
         var viewEle = $(e.currentTarget).closest('.item');
-        var view = this.findChildViewByElement(viewEle)[0];
-        console.log('drop down');
-        console.log(view.data.author);
+        if (!$(e.currentTarget).hasClass('seen')) {
+            viewEle.addClass('seen');
+        }
+        // var view = this.findChildViewByElement(viewEle)[0];
     }
 });
 

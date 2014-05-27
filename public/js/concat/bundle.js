@@ -55,7 +55,7 @@ H.View = Backbone.View.extend({
         }
 
         this.$el.addClass(this.className);
-        this._childViewIdMappings = {};
+        this.children = {};
 
         // delete the id attr
         // in case get so many ids in the document
@@ -72,22 +72,16 @@ H.View = Backbone.View.extend({
         return this.children[idx];
     },
     getChildViewById: function(name) {
-        return this._childViewIdMappings[name]; 
+        return this.children[name]; 
     },
     setChildViewById: function(name, value) {
-        this._childViewIdMappings[name] = value;
+        this.children[name] = value;
     },
     findChildViewByElement: function(ele) {
         // _.filter returns an array
         return _.filter(this.children, function(c) {{
             return c.$el.is(ele);
         }});  
-    },
-    destory: function() {
-    
-    },
-    detachAllEvents: function() {
-    
     },
     appendChild: function(childViewData) {
         this.$el.append(childViewData.html);
@@ -102,16 +96,40 @@ H.View = Backbone.View.extend({
         H.viewFactory.append(siblingViewData.view, this.parent);
         console.log('appended a sibling!!'); 
     },
-    // 5.22
-    replaceEle: function(html) {
-        this.$el.replaceWith(html);
+    destroy: function() {
+        // this.remove(); // removes dom element
+        _.each(this.children, function(child) {
+            child.destroy();
+            // recursively destroy children views
+        });      
+
+        delete this.parent.children[this.cid];
+        this.$el.empty();
         this.remove();
-        this.off();
+
+    },
+    replaceEle: function(html) {
+        this.$el.before(html);
+        this.destroy();
     },
     replaceView: function(viewModule) {
-        this.parent.children.push(H.viewFactory.create(viewModule, this.parent.$el));
+        // delete 'this' reference in the children object of parent
+        // for garbage collection
+        // delete this.parent.children[this.cid];
+
+        var newView = H.viewFactory.create(viewModule);
+        newView.parent = this.parent;
+        this.parent.setChildViewById(newView.cid, newView);
+
+        this.parent = null;
+        delete this.$el;
+        delete this.el;
+        // still has a little bit of memory leak
+        // (detached dom tree 2 entries, 1 object count
+        //  <ul class="square View"></ul> )
+        // of which the cause cannot be identified
+
     },
-    // 5.22
     showLoading: function() {
         console.log('Loading...'); 
     }
@@ -140,14 +158,12 @@ H.loadViewConstructor = function(viewName) {
 
 // create views
 H.viewFactory = {
-    create: function(viewModule, parentEle) {
-
-        parentEle = parentEle || null;
+    create: function(viewModule) {
 
         // the parenthesis around 'H.loadViewConstructor(viewModule.name)' is very important!!!
         var view = new (H.loadViewConstructor(viewModule.name))({
             // bind this view to the element via 'uid' throught the 'id' attr
-            el: $('#' + viewModule.uid, parentEle),
+            el: $('#' + viewModule.uid),
             options: viewModule.options,
             name: viewModule.name,
             data: viewModule.data
@@ -155,17 +171,23 @@ H.viewFactory = {
 
         if(viewModule.children) {
             view.children = _.map(viewModule.children, function(item) {
-                var childView = H.viewFactory.create(item, view.$el);
+                var childView = H.viewFactory.create(item);
                 childView.parent = view;
                 view.setChildViewById(childView.cid, childView);
-                return childView;
+                return [childView.cid, childView];
             });
+
+            view.children = _.object(view.children);
+
+        } else {
+            delete view.children;
         }
 
         return view;
     },
     append: function(viewModule, parentView) {
-        parentView.children.push(H.viewFactory.create(viewModule, parentView.$el));
+        var childView = H.viewFactory.create(viewModule);
+        parentView.setChildViewById(childView.cid, childView);
     }
 };
 ;var H = H || {};
@@ -350,9 +372,6 @@ H.views.item = H.View.extend({
         'click .avatar': 'checkOutAuthor'
     },
     sendLikeButton: function(e) {
-        console.log(e.currentTarget === this);
-        console.log($(e.currentTarget).html());
-        console.log(this.data.like + ' ' + this.data.itemId);
         return false;
     },
     checkOutAuthor: function(e) {
@@ -377,8 +396,7 @@ H.views.Items = H.View.extend({
     checkOutPic: function(e) {
 
         var self = this;
-        
-        console.log($(e.currentTarget).html());
+
         this.showLoading(); 
     
         var picResource = H.resourceFactory('HozzzAlbum', {fuck: 'you'});
@@ -386,20 +404,15 @@ H.views.Items = H.View.extend({
         picResource = picResource.get({
             success: function(responseViewData) {
                 self.appendSibling(responseViewData);
-                console.log(self); 
             },
-            // error: function(err) {
-            //    console.log('notify errors');
-            // }
-                    error: function(data) {
-                            // need to a method that replace current whole subview of some view
-                            // instead of just append views 
-                             self.replaceEle(data.html);
-                             self.replaceView(data.view);
-                    }
+            error: function(data) {
+                // need a method that replace current whole subview of some view
+                // instead of just append views 
+                self.replaceEle(data.html);
+                self.replaceView(data.view);
+            }
         });
 
-        // console.log(picResource);
 
         e.preventDefault();
         return false;
@@ -421,13 +434,14 @@ H.views.squareItems = H.views.Items.extend({
 H.views.defaultItems = H.views.Items.extend({
     events: {
         'click .front': 'checkOutPic',
-        'mouseenter .front': 'dropDownAlbum'
+        'mouseenter .front': 'dropDownAlbum',
     },
     dropDownAlbum: function(e) {
         var viewEle = $(e.currentTarget).closest('.item');
-        var view = this.findChildViewByElement(viewEle)[0];
-        console.log('drop down');
-        console.log(view.data.author);
+        if (!$(e.currentTarget).hasClass('seen')) {
+            viewEle.addClass('seen');
+        }
+        // var view = this.findChildViewByElement(viewEle)[0];
     }
 });
 
@@ -467,7 +481,7 @@ H.views.rightBar = H.View.extend();
 
 H.views.viewLayout = H.View.extend({
     events: {
-        'click li': 'changeViewLayout'
+        'click li': 'changeViewLayout',
     },
     changeViewLayout: function(e) {
         var view = this.findChildViewByElement($(e.currentTarget))[0];
@@ -478,6 +492,54 @@ H.views.viewLayout = H.View.extend({
     }
 });
 
+H.views.searchBox = H.View.extend({
+    events: {
+        'focus .search-text': 'widenInputBox',
+        'blur .search-text': 'shortenInputBox',
+        'click .search-img': 'search'
+    },
+    widenInputBox: function(e) {
+        $(e.currentTarget).animate({
+            'width': 150
+        });
+    },
+    shortenInputBox: function(e) {
+        $(e.currentTarget).animate({
+            'width': 70
+        });
+    },
+    search: function(e) {
+        console.log('fuck, you just searched'); 
+    }
+});
+;var H = H || {};
+
+H.views.Album = H.View.extend({
+
+});
+
+
+H.views.subscribeBtn = H.views.Button.extend({
+    onClick: function() {
+        console.log('subscribed!!!');
+        return false;
+    }
+});
+
+
+H.views.commentBtn = H.views.Button.extend({
+    onClick: function() {
+        console.log('just commented!!!');
+        return false;
+    }
+});
+
+
+H.views.commentReplyBtn = H.views.Button.extend({
+    onClick: function() {
+        console.log('replied!!');
+    }
+});
 ;
 var H = H || {};
 

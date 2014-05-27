@@ -18,8 +18,13 @@ Route::get('/',
 	array(
 		'as'=>'index',
 		function(){
-			if(Auth::check())
-				return View::make('stages.main_stage');
+            if(Auth::check()) {
+                $viewer = 'default'; 
+                // see if user has a pre-selected viewer
+                // and put it in $viewer...
+
+				return View::make('viewer.' . $viewer);
+            }
 			else
 				return View::make('guests.new');
 		})

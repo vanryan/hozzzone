@@ -19,7 +19,7 @@ H.View = Backbone.View.extend({
         }
 
         this.$el.addClass(this.className);
-        this._childViewIdMappings = {};
+        this.children = {};
 
         // delete the id attr
         // in case get so many ids in the document
@@ -36,22 +36,16 @@ H.View = Backbone.View.extend({
         return this.children[idx];
     },
     getChildViewById: function(name) {
-        return this._childViewIdMappings[name]; 
+        return this.children[name]; 
     },
     setChildViewById: function(name, value) {
-        this._childViewIdMappings[name] = value;
+        this.children[name] = value;
     },
     findChildViewByElement: function(ele) {
         // _.filter returns an array
         return _.filter(this.children, function(c) {{
             return c.$el.is(ele);
         }});  
-    },
-    destory: function() {
-    
-    },
-    detachAllEvents: function() {
-    
     },
     appendChild: function(childViewData) {
         this.$el.append(childViewData.html);
@@ -66,16 +60,40 @@ H.View = Backbone.View.extend({
         H.viewFactory.append(siblingViewData.view, this.parent);
         console.log('appended a sibling!!'); 
     },
-    // 5.22
-    replaceEle: function(html) {
-        this.$el.replaceWith(html);
+    destroy: function() {
+        // this.remove(); // removes dom element
+        _.each(this.children, function(child) {
+            child.destroy();
+            // recursively destroy children views
+        });      
+
+        delete this.parent.children[this.cid];
+        this.$el.empty();
         this.remove();
-        this.off();
+
+    },
+    replaceEle: function(html) {
+        this.$el.before(html);
+        this.destroy();
     },
     replaceView: function(viewModule) {
-        this.parent.children.push(H.viewFactory.create(viewModule, this.parent.$el));
+        // delete 'this' reference in the children object of parent
+        // for garbage collection
+        // delete this.parent.children[this.cid];
+
+        var newView = H.viewFactory.create(viewModule);
+        newView.parent = this.parent;
+        this.parent.setChildViewById(newView.cid, newView);
+
+        this.parent = null;
+        delete this.$el;
+        delete this.el;
+        // still has a little bit of memory leak
+        // (detached dom tree 2 entries, 1 object count
+        //  <ul class="square View"></ul> )
+        // of which the cause cannot be identified
+
     },
-    // 5.22
     showLoading: function() {
         console.log('Loading...'); 
     }
