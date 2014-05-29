@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </li>
-                @endfor
+                @endforeach
             </ul>
         </div>
     </div>
