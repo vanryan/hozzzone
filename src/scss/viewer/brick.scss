@@ -1,0 +1,18 @@
+.brick {
+    .col {
+        width: $brickItemWidth;
+        display: inline-block;
+        margin: 0 $brickColMarginLeftRight;
+        vertical-align: top;
+    }
+
+    .item {
+        position: relative;
+        width: $brickItemWidth;
+        margin-bottom: $brickItemMarginBottom;
+        img {
+            width: $brickItemWidth;
+        }
+    }
+
+}

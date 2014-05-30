@@ -7,42 +7,6 @@
         margin: 0 $squareItemMarginRight 20px 0;
         vertical-align: top;
 
-        &:hover .img-overlay {
-            opacity: 1; 
-        }
-
-        .img-overlay {
-            opacity: 0;
-            z-index: 1;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 50px;
-            width: $squareItemImgWidth - 2 * $squareItemShadowPadding;
-            padding: $squareItemShadowPadding;
-            color: $squareItemShadowFontColor;
-            -webkit-transition-property: opacity;
-            -moz-transition-property: opacity;
-            -o-transition-property: opacity;
-            transition-property: opacity;
-            -webkit-transition-duration: 300ms;
-            -moz-transition-duration: 300ms;
-            -o-transition-duration: 300ms;
-            transition-duration: 300ms;
-        }
-
-        .shadow {
-            opacity: 0.3;
-            width: $squareItemImgWidth - 2 * $squareItemShadowPadding;
-            height: 50px;
-            padding: $squareItemShadowPadding;
-            background: #000;
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: -1;
-        }
-
         .content {
             position: relative;
             height: $squareItemImgWidth;

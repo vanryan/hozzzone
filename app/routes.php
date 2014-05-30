@@ -18,12 +18,35 @@ Route::get('/',
 	array(
 		'as'=>'index',
 		function(){
-            if(Auth::check()) {
+            if(!Auth::check()) {
+
+                $items = array(
+                    (object)array('avatar'=>'long.jpg',
+                        'img'=>'davinci.jpg',
+                        'hit'=>'1092',
+                        'title'=>'da vinci',
+                        'subItems'=>array('demon.jpg', 'orphan.jpg')
+                    ),
+                    (object)array('avatar'=>'long.jpg',
+                        'img'=>'demon.jpg',
+                        'hit'=>'234',
+                        'title'=>'the demons inside da vinci',
+                        'subItems'=>array('davinci.jpg', 'orphan.jpg')
+                    ),
+                    (object)array('avatar'=>'long.jpg',
+                        'img'=>'orphan.jpg',
+                        'hit'=>'832',
+                        'title'=>'orphan black',
+                        'subItems'=>array('davinci.jpg', 'demon.jpg')
+                    )
+                );
+
+
                 $viewer = 'default'; 
                 // see if user has a pre-selected viewer
                 // and put it in $viewer...
 
-				return View::make('viewer.' . $viewer);
+				return View::make('viewer.' . $viewer, array('items' => $items));
             }
 			else
 				return View::make('guests.new');

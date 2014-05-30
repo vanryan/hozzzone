@@ -62,6 +62,12 @@ $squareItemAvatarNameColor: #999;
 
 
 
+// brick viewer
+$brickViewerWidth: 992px;
+$brickColMarginLeftRight: 9px; 
+$brickItemWidth: ($brickViewerWidth - 4 * 2 * $brickColMarginLeftRight) / 4;
+$brickItemMarginBottom: 22px;
+
 // album
 
 $albumViewerWidth: 584px;
@@ -138,19 +144,56 @@ a {
 
 #main-box {
     padding-top: $main-box-padding-top;
-//     border-top: 8px solid #999;
+
+    .img-overlay {
+        opacity: 0;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        padding: $squareItemShadowPadding;
+        color: $squareItemShadowFontColor;
+        -webkit-transition-property: opacity;
+        -moz-transition-property: opacity;
+        -o-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: 300ms;
+        -moz-transition-duration: 300ms;
+        -o-transition-duration: 300ms;
+        transition-duration: 300ms;
+    }
+
+    .shadow {
+        opacity: 0.3;
+        background: #000;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+    }
+
+    .item:hover .img-overlay {
+        opacity: 1;
+    }
+
 
     .default {
         @extend %viewer; 
         width: $defaultViewerWidth;
- //       left: -55px;
     }
     
     .square {
         @extend %viewer; 
         width: $squareViewerWidth;
-        // background: $sub-color;
-//        left: -37px;
+    }
+
+    .brick {
+        @extend %viewer;
+        width: $brickViewerWidth;
     }
 
     .album {
@@ -197,6 +240,7 @@ a {
 @import "rightBar";
 @import "viewer/default";
 @import "viewer/square";
+@import "viewer/brick";
 @import "album/album";
 @import "album/albumComment";
 @import "mq/mq";
