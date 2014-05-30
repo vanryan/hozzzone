@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration {
 			$table->timestamps();
 
 			/* profile */
-			$table->string('icon')->nullable();  // Filename
+			$table->string('icon',42)->nullable();  // Filename
 			$table->tinyInteger('ugender')->default(3);
 			$table->tinyInteger('uintend')->default(3);
 			$table->smallInteger('ucity')->nullable();

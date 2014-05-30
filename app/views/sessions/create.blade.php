@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('base')
 
 @section('title')
 	用户登录
