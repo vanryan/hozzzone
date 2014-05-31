@@ -9,7 +9,7 @@ default
 @stop
 
 @section('rightBar')
-    @include('layouts.rightbar_index')
+    @include('layouts.rightbar_index', array('viewer' => $viewer))
 @stop
 
 

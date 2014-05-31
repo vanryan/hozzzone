@@ -1,0 +1,31 @@
+.rightBar {
+    .backToTop {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+    }
+
+    .searchBox {
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .search-text {
+        float: right;
+        margin-right: 8px;
+        height: 18px;
+        border: 1px solid #999;
+        padding: $searchTextPaddingTop $searchTextPaddingRight $searchTextPaddingTop $searchTextPaddingLeft; 
+    }
+
+    .search-img {
+        display: block;
+        width: 33px;
+        height: 37px;
+        background: url(../img/search.png) no-repeat 8px center;
+        position: absolute;
+        top: 1px;
+        right: 9px; 
+        cursor: pointer;
+    }
+}

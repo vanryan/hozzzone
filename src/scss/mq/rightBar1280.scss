@@ -4,9 +4,17 @@
     top: 60px;
     right: 0;
     width: 210px;
+
+    >div {
+        display: block;
+        margin: 0;
+    }
     
     .layout {
+        display: block;
         overflow: hidden;
+        height: auto;
+        width: auto;
     }
 
     .viewer {
@@ -20,6 +28,9 @@
 
             &.active {
                 border-left: 1px solid #a5a5a5;
+                background: transparent;
+                height: auto;
+                width: auto;
             }
             a {
                 display: block;
@@ -65,29 +76,13 @@
     .search {
         clear: right;
     }
-    
-    .searchBox {
-        overflow: hidden;
-        position: relative;
-    }
-    
-    .search-text {
-        float: right;
-        margin-right: 8px;
-        width: $searchTextWidth;
-        border: 1px solid #999;
-        padding: $searchTextPaddingTop $searchTextPaddingRight $searchTextPaddingTop $searchTextPaddingLeft; 
-    }
 
-    .search-img {
+    .search-text {
+        width: $searchTextWidth;
+    }
+    
+    .hot {
         display: block;
-        width: 33px;
-        height: 37px;
-        background: url(../img/search.png) no-repeat 8px center;
-        position: absolute;
-        top: 1px;
-        right: 9px; 
-        cursor: pointer;
     }
 
     .users {
@@ -96,6 +91,3 @@
     }
 }
 
-#backToTop {
-    margin-left: 60px;
-}

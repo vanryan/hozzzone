@@ -1,7 +1,7 @@
 /*!
  * hozzz
  * @version 0.0.0
- * @time 2014-05-31 14:42
+ * @time 2014-05-31 19:56
  */
 
 /** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
@@ -43,6 +43,11 @@ table {
 
 a {
   text-decoration: none;
+}
+
+input {
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -152,9 +157,6 @@ a {
     transform: translateY(0);
   }
 }
-.nav {
-  overflow: hidden;
-}
 .nav .user {
   float: left;
 }
@@ -174,6 +176,35 @@ a {
 }
 .nav li.category:hover ul {
   display: block;
+  background: #fff;
+  z-index: 4000;
+}
+
+.rightBar .backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+.rightBar .searchBox {
+  overflow: hidden;
+  position: relative;
+}
+.rightBar .search-text {
+  float: right;
+  margin-right: 8px;
+  height: 18px;
+  border: 1px solid #999;
+  padding: 10px 33px 10px 10px;
+}
+.rightBar .search-img {
+  display: block;
+  width: 33px;
+  height: 37px;
+  background: url(../img/search.png) no-repeat 8px center;
+  position: absolute;
+  top: 1px;
+  right: 9px;
+  cursor: pointer;
 }
 
 .default .item {
@@ -576,6 +607,9 @@ a {
     width: 306px;
   }
 
+  .nav {
+    float: left;
+  }
   .nav .user {
     margin: 10px;
     font-size: 0;
@@ -621,10 +655,44 @@ a {
   .nav ul.category li a:hover {
     background: blue;
   }
+
+  .rightBar {
+    float: right;
+  }
+  .rightBar > div {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px;
+  }
+  .rightBar .layout {
+    display: none;
+  }
+  .rightBar .hot {
+    display: none;
+  }
+  .rightBar .search-text {
+    width: 10px;
+  }
 }
 @media screen and (min-width: 612px) {
   #main-box .square {
     width: 612px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .rightBar .layout {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+  }
+  .rightBar .layout .active {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: teal;
+  }
+  .rightBar .search-text {
+    width: 100px;
   }
 }
 @media screen and (min-width: 918px) {
@@ -700,8 +768,15 @@ a {
     right: 0;
     width: 210px;
   }
+  .rightBar > div {
+    display: block;
+    margin: 0;
+  }
   .rightBar .layout {
+    display: block;
     overflow: hidden;
+    height: auto;
+    width: auto;
   }
   .rightBar .viewer {
     float: right;
@@ -715,6 +790,9 @@ a {
   }
   .rightBar .viewer li.active {
     border-left: 1px solid #a5a5a5;
+    background: transparent;
+    height: auto;
+    width: auto;
   }
   .rightBar .viewer li a {
     display: block;
@@ -756,34 +834,15 @@ a {
   .rightBar .search {
     clear: right;
   }
-  .rightBar .searchBox {
-    overflow: hidden;
-    position: relative;
-  }
   .rightBar .search-text {
-    float: right;
-    margin-right: 8px;
     width: 70px;
-    border: 1px solid #999;
-    padding: 10px 33px 10px 10px;
   }
-  .rightBar .search-img {
+  .rightBar .hot {
     display: block;
-    width: 33px;
-    height: 37px;
-    background: url(../img/search.png) no-repeat 8px center;
-    position: absolute;
-    top: 1px;
-    right: 9px;
-    cursor: pointer;
   }
   .rightBar .users {
     padding-left: 60px;
     margin-top: 30px;
-  }
-
-  #backToTop {
-    margin-left: 60px;
   }
 }
 
