@@ -12,7 +12,7 @@ class Imageind extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var string
 	 */
-	protected $table = 'imageinds';
+	protected $table = 'imageInds';
 
 
 	/**

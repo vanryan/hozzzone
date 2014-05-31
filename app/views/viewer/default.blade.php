@@ -1,14 +1,3 @@
-// items
-//   -> avatar
-//   -> img
-//   -> subItems
-//   -> hit
-//   -> title
-
-// initJSON
-
-
-
 @extends('base')
 
 @section('title')

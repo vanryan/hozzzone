@@ -22,9 +22,7 @@ square
 @section('js')
     <script>
 
-        var squareViewerJSON = {
-
-        };
+        var squareViewerJSON = {{ $initJSON }};
     
         H.init(squareViewerJSON);
         

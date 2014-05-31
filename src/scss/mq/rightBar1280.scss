@@ -1,0 +1,101 @@
+.rightBar {
+    z-index: 1000;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 210px;
+    
+    .layout {
+        overflow: hidden;
+    }
+
+    .viewer {
+        float: right;
+        margin-right: 50px;
+        li {
+            width: 25px;
+            padding: 10px 0 10px $viewer-left-margin;
+            border-left: 1px solid transparent;
+            cursor: pointer;
+
+            &.active {
+                border-left: 1px solid #a5a5a5;
+            }
+            a {
+                display: block;
+                width: 25px;
+                height: 16px;
+            }
+            &:hover {
+                border-left: 1px solid #a5a5a5;
+            }
+            &.default:hover a {
+                background: url(../img/active_default_view.png);
+            }
+            &.default a {
+                background: url(../img/default_view.png);
+            }
+            &.square:hover a {
+                background: url(../img/active_square_view.png)
+            }
+            &.square a {
+                background: url(../img/square_view.png);
+            }
+            &.brick a {
+                background: url(../img/brick_view.png)
+            }
+            &.brick:hover a {
+                background: url(../img/active_brick_view.png);
+            }
+        }
+    }
+    
+    .add {
+        text-indent: -9999px;
+        overflow: hidden;
+        float: right;
+        margin: 30px 35px 30px 0;
+        width: 52px;
+        height: 49px;
+        background: url(../img/upload.png) 0 0 no-repeat;
+        display: block;
+        cursor: pointer;
+    }
+    
+    .search {
+        clear: right;
+    }
+    
+    .searchBox {
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .search-text {
+        float: right;
+        margin-right: 8px;
+        width: $searchTextWidth;
+        border: 1px solid #999;
+        padding: $searchTextPaddingTop $searchTextPaddingRight $searchTextPaddingTop $searchTextPaddingLeft; 
+    }
+
+    .search-img {
+        display: block;
+        width: 33px;
+        height: 37px;
+        background: url(../img/search.png) no-repeat 8px center;
+        position: absolute;
+        top: 1px;
+        right: 9px; 
+        cursor: pointer;
+    }
+
+    .users {
+        padding-left: 60px;
+        margin-top: 30px;
+    }
+}
+
+#backToTop {
+    margin-left: 60px;
+}

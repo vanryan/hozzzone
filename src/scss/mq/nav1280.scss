@@ -1,0 +1,62 @@
+.nav {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    width: 120px;
+    text-align: center;
+
+    .user {
+        margin: 0 0 20px 0;
+    }
+
+    .avatar {
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .settings {
+        margin: 0 0 20px 10px;
+    }
+
+    .navigate {
+        margin: 0;
+        height: auto;
+        >ul>li>a {
+            display: block;
+            margin-bottom: 17px; 
+            padding: 14px 40px;
+            border: 1px solid #999;
+            border-left-width: 0;
+            border-radius: 0 5px 5px 0;
+            line-height: normal;
+            text-align: left;
+            height: auto;
+            width: auto;
+
+            &:hover {
+                border-color: #000; 
+            }
+        }
+
+        li.active>a {
+            background: transparent;
+        }
+    }
+
+    ul.category {
+        position: static;
+        height: auto;
+        width: auto;
+        line-height: normal;
+
+        li {
+            display: block;
+        }
+        li a {
+            display: block;
+            margin-bottom: 16px;
+        }
+    }
+}

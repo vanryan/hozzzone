@@ -1,7 +1,7 @@
 /*!
  * hozzz
  * @version 0.0.0
- * @time 2014-05-29 13:2
+ * @time 2014-05-31 14:42
  */
 
 /** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
@@ -55,6 +55,16 @@ a {
   color: #999999;
 }
 
+.bars {
+  background: #fff;
+  border-bottom: 8px solid #999;
+  z-index: 4000;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .outer-box {
   width: 100%;
   position: relative;
@@ -64,9 +74,6 @@ a {
   margin: 0 auto;
 }
 
-#main-box {
-  padding-top: 33px;
-}
 #main-box .img-overlay {
   opacity: 0;
   z-index: 1;
@@ -103,7 +110,7 @@ a {
   width: 630px;
 }
 #main-box .square {
-  width: 921px;
+  width: 918px;
 }
 #main-box .brick {
   width: 992px;
@@ -145,160 +152,28 @@ a {
     transform: translateY(0);
   }
 }
-#nav {
-  z-index: 1000;
-  position: fixed;
-  left: 0;
-  top: 40px;
-  width: 120px;
-}
-#nav .user {
-  padding-left: 20px;
-  margin-bottom: 20px;
+.nav {
   overflow: hidden;
 }
-#nav .user .avatar {
+.nav .user {
   float: left;
 }
-#nav .user .avatar img {
-  width: 60px;
-  height: 60px;
-}
-#nav .user .settings {
+.nav .navigate {
   float: left;
-  margin-right: 100px;
 }
-#nav .user .settings ul {
-  display: none;
-}
-#nav .navigate {
-  margin-bottom: 20px;
-}
-#nav .navigate li {
-  font-size: 14px;
-  margin-bottom: 10px;
-  width: 100px;
-  text-align: center;
-}
-#nav .navigate ul li a {
-  display: block;
-  color: #5e5e5e;
-  border-radius: 0 3px 3px 0;
-  padding: 8px 12px;
-  border: 1px solid #dddddd;
-  border-left-width: 0;
-}
-#nav .navigate li.category:hover ul li {
-  display: block;
-  display: list-item;
-}
-#nav .navigate ul.category {
-  margin-top: 10px;
-}
-#nav .navigate ul.category li {
-  display: none;
-}
-#nav .navigate ul.category li a {
+.nav .avatar, .nav .settings {
   display: inline-block;
-  margin: 0 auto;
-  border-radius: 3px;
-  border: 0;
-  padding: 2px 4px;
-  background: #dddddd;
-  color: #7f7f7f;
 }
-
-.rightBar {
-  z-index: 1000;
-  position: fixed;
-  top: 60px;
-  right: 0;
-  width: 210px;
+.nav .settings {
+  background: yellow;
+  width: 40px;
+  height: 40px;
 }
-.rightBar .layout {
-  overflow: hidden;
+.nav ul.category {
+  display: none;
 }
-.rightBar .viewer {
-  float: right;
-  margin-right: 50px;
-}
-.rightBar .viewer li {
-  width: 25px;
-  padding: 10px 0 10px 29px;
-  border-left: 1px solid transparent;
-  cursor: pointer;
-}
-.rightBar .viewer li.active {
-  border-left: 1px solid #a5a5a5;
-}
-.rightBar .viewer li a {
+.nav li.category:hover ul {
   display: block;
-  width: 25px;
-  height: 16px;
-}
-.rightBar .viewer li:hover {
-  border-left: 1px solid #a5a5a5;
-}
-.rightBar .viewer li.default:hover a {
-  background: url(../img/active_default_view.png);
-}
-.rightBar .viewer li.default a {
-  background: url(../img/default_view.png);
-}
-.rightBar .viewer li.square:hover a {
-  background: url(../img/active_square_view.png);
-}
-.rightBar .viewer li.square a {
-  background: url(../img/square_view.png);
-}
-.rightBar .viewer li.brick a {
-  background: url(../img/brick_view.png);
-}
-.rightBar .viewer li.brick:hover a {
-  background: url(../img/active_brick_view.png);
-}
-.rightBar .add {
-  text-indent: -9999px;
-  overflow: hidden;
-  float: right;
-  margin: 30px 35px 30px 0;
-  width: 52px;
-  height: 49px;
-  background: url(../img/upload.png) 0 0 no-repeat;
-  display: block;
-  cursor: pointer;
-}
-.rightBar .search {
-  clear: right;
-}
-.rightBar .searchBox {
-  overflow: hidden;
-  position: relative;
-}
-.rightBar .search-text {
-  float: right;
-  margin-right: 8px;
-  width: 70px;
-  border: 1px solid #999;
-  padding: 10px 33px 10px 10px;
-}
-.rightBar .search-img {
-  display: block;
-  width: 33px;
-  height: 37px;
-  background: url(../img/search.png) no-repeat 8px center;
-  position: absolute;
-  top: 1px;
-  right: 9px;
-  cursor: pointer;
-}
-.rightBar .users {
-  padding-left: 60px;
-  margin-top: 30px;
-}
-
-#backToTop {
-  margin-left: 60px;
 }
 
 .default .item {
@@ -383,7 +258,7 @@ a {
   display: inline-block;
   width: 270px;
   height: 320px;
-  margin: 0 37px 20px 0;
+  margin: 0 18px 20px;
   vertical-align: top;
 }
 .square .item .content {
@@ -599,55 +474,316 @@ a {
   height: 30px;
 }
 
-.bars {
-  background: #fff;
-  border-bottom: 8px solid #999;
-  z-index: 4000;
-  width: 100%;
+.full_screen {
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
+  right: 0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 1280px) {
+.loginBox .email, .loginBox .password {
+  padding: 10px;
+  border-radius: 3px;
+  margin: 0 auto 20px;
+}
+
+.loginBox .email, .loginBox .password, .loginBox .loginBtn, .loginBox .regLink, .loginBox .recommendAuthor, .loginBox .thirdPartyLogin {
+  border: 0;
+  box-shadow: 1px 1px 10px 2px #555;
+  display: block;
+  opacity: .8;
+  background: #fff;
+}
+
+.logreg-main-box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.loginBox {
+  width: 500px;
+  height: 300px;
+  position: relative;
+  top: 50%;
+  margin: 0 auto;
+  margin-top: -200px;
+  padding: 21px 18px;
+  border-radius: 8px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+.loginBox .email {
+  width: 200px;
+}
+.loginBox .password {
+  width: 150px;
+}
+.loginBox .loginBtn {
+  margin: 8px auto 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  text-indent: -10000px;
+  background: url() white no-repeat 50% 50%;
+}
+.loginBox .regLink {
+  display: block;
+  width: 30px;
+  text-align: center;
+  margin: 18px auto 0;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+.loginBox .footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 21px 18px;
+  overflow: hidden;
+}
+.loginBox .recommendAuthor {
+  padding: 6px 10px;
+  padding-left: 30px;
+  border-radius: 3px;
+  float: left;
+}
+.loginBox .thirdPartyLogin {
+  padding: 4px 10px;
+  border-radius: 3px;
+  float: right;
+}
+
+@media screen and (min-width: 320px) {
   #main-box {
-    margin-top: 120px;
+    margin-top: 90px;
+  }
+  #main-box .square {
+    width: 306px;
   }
 
-  #nav {
+  .nav .user {
+    margin: 10px;
+    font-size: 0;
+  }
+  .nav .avatar img {
+    width: 40px;
+    height: 40px;
+  }
+  .nav .settings {
+    margin-left: 20px;
+  }
+  .nav .navigate {
+    margin: 10px;
+    height: 40px;
+  }
+  .nav .navigate > ul > li > a {
+    display: none;
+    vertical-align: top;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+  }
+  .nav .navigate li.active > a {
+    display: inline-block;
+    background: teal;
+  }
+  .nav li.category {
+    position: relative;
+  }
+  .nav ul.category {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    height: 40px;
+    width: 14em;
+    line-height: 40px;
+    padding: 0 10px;
+  }
+  .nav ul.category li {
+    display: inline-block;
+  }
+  .nav ul.category li a:hover {
+    background: blue;
+  }
+}
+@media screen and (min-width: 612px) {
+  #main-box .square {
+    width: 612px;
+  }
+}
+@media screen and (min-width: 918px) {
+  #main-box {
+    margin-top: 33px;
+  }
+  #main-box .square {
+    width: 918px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .bars {
+    text-align: center;
+  }
+
+  .nav {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    width: 120px;
+    text-align: center;
+  }
+  .nav .user {
+    margin: 0 0 20px 0;
+  }
+  .nav .avatar img {
+    width: 60px;
+    height: 60px;
+  }
+  .nav .settings {
+    margin: 0 0 20px 10px;
+  }
+  .nav .navigate {
+    margin: 0;
+    height: auto;
+  }
+  .nav .navigate > ul > li > a {
+    display: block;
+    margin-bottom: 17px;
+    padding: 14px 40px;
+    border: 1px solid #999;
+    border-left-width: 0;
+    border-radius: 0 5px 5px 0;
+    line-height: normal;
+    text-align: left;
+    height: auto;
+    width: auto;
+  }
+  .nav .navigate > ul > li > a:hover {
+    border-color: #000;
+  }
+  .nav .navigate li.active > a {
+    background: transparent;
+  }
+  .nav ul.category {
     position: static;
+    height: auto;
     width: auto;
+    line-height: normal;
   }
-  #nav .user {
-    vertical-align: middle;
-    display: inline-block;
-    margin: 20px 0;
+  .nav ul.category li {
+    display: block;
   }
-  #nav .navigate {
-    height: 42px;
-    display: inline-block;
-    margin: 0;
-    vertical-align: middle;
-  }
-  #nav .navigate li {
-    width: auto;
-    display: inline;
-  }
-  #nav .navigate li.category:hover ul li {
-    display: inline;
-  }
-  #nav .navigate ul.category {
-    margin: 0;
-    padding-top: 10px;
-  }
-  #nav .navigate ul li a {
-    padding: 0;
-    border: 0;
-    display: inline;
+  .nav ul.category li a {
+    display: block;
+    margin-bottom: 16px;
   }
 
   .rightBar {
-    display: none;
+    z-index: 1000;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 210px;
+  }
+  .rightBar .layout {
+    overflow: hidden;
+  }
+  .rightBar .viewer {
+    float: right;
+    margin-right: 50px;
+  }
+  .rightBar .viewer li {
+    width: 25px;
+    padding: 10px 0 10px 29px;
+    border-left: 1px solid transparent;
+    cursor: pointer;
+  }
+  .rightBar .viewer li.active {
+    border-left: 1px solid #a5a5a5;
+  }
+  .rightBar .viewer li a {
+    display: block;
+    width: 25px;
+    height: 16px;
+  }
+  .rightBar .viewer li:hover {
+    border-left: 1px solid #a5a5a5;
+  }
+  .rightBar .viewer li.default:hover a {
+    background: url(../img/active_default_view.png);
+  }
+  .rightBar .viewer li.default a {
+    background: url(../img/default_view.png);
+  }
+  .rightBar .viewer li.square:hover a {
+    background: url(../img/active_square_view.png);
+  }
+  .rightBar .viewer li.square a {
+    background: url(../img/square_view.png);
+  }
+  .rightBar .viewer li.brick a {
+    background: url(../img/brick_view.png);
+  }
+  .rightBar .viewer li.brick:hover a {
+    background: url(../img/active_brick_view.png);
+  }
+  .rightBar .add {
+    text-indent: -9999px;
+    overflow: hidden;
+    float: right;
+    margin: 30px 35px 30px 0;
+    width: 52px;
+    height: 49px;
+    background: url(../img/upload.png) 0 0 no-repeat;
+    display: block;
+    cursor: pointer;
+  }
+  .rightBar .search {
+    clear: right;
+  }
+  .rightBar .searchBox {
+    overflow: hidden;
+    position: relative;
+  }
+  .rightBar .search-text {
+    float: right;
+    margin-right: 8px;
+    width: 70px;
+    border: 1px solid #999;
+    padding: 10px 33px 10px 10px;
+  }
+  .rightBar .search-img {
+    display: block;
+    width: 33px;
+    height: 37px;
+    background: url(../img/search.png) no-repeat 8px center;
+    position: absolute;
+    top: 1px;
+    right: 9px;
+    cursor: pointer;
+  }
+  .rightBar .users {
+    padding-left: 60px;
+    margin-top: 30px;
+  }
+
+  #backToTop {
+    margin-left: 60px;
   }
 }
 

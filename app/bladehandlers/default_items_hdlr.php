@@ -1,7 +1,7 @@
 <?php
 	class defBld_item{
 		public $authorname,$avatar,$img,$title,$hit;
-		public $subitems=array();
+		public $subItems=array();
 	}
 
 
@@ -12,8 +12,8 @@
 	{
 		$items[$i] = new defBld_item;
 		$items[$i]->authorname = $item_data[$i]->upuname;
-		$items[$i]->avatar = $item_data[$i]->upuicon . '.jpg';
-		$items[$i]->img = $item_data[$i]->filename . '.jpg';
+		$items[$i]->avatar = $item_data[$i]->upuicon;
+		$items[$i]->img = $item_data[$i]->filename;
 		$items[$i]->title = $item_data[$i]->imgtitle;
 		$items[$i]->hit = $item_data[$i]->hits;
 	}

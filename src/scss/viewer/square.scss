@@ -4,7 +4,7 @@
         display: inline-block;
         width: $squareItemImgWidth;
         height: $squareItemImgWidth + $squareItemInfoHeight;
-        margin: 0 $squareItemMarginRight 20px 0;
+        margin: 0 $squareItemMarginLeftRight 20px;
         vertical-align: top;
 
         .content {

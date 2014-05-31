@@ -1,0 +1,57 @@
+.nav {
+    .user {
+        margin: 10px;
+        font-size: 0;
+    }
+
+    .avatar {
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    .settings {
+        margin-left: 20px;
+    }
+    
+    .navigate {
+        margin: 10px;
+        height: 40px;
+
+        >ul>li>a {
+            display: none;
+            vertical-align: top;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        li.active>a {
+            display: inline-block; 
+            background: teal;
+        }
+
+    }
+
+    li.category {
+        position: relative;
+    }
+
+    ul.category {
+        position: absolute;
+        top: 0;
+        left: 40px;
+        height: 40px;
+        width: 14em;
+        line-height: 40px;
+        padding: 0 10px;
+        li {
+            display: inline-block;
+            a:hover {
+                background: blue;
+            }
+        }
+    }
+}

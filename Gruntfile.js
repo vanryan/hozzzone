@@ -69,6 +69,7 @@ module.exports = function(grunt) {
                         'src/js/view/viewer.js', 
                         'src/js/view/Button.js', 
                         'src/js/view/rightBar.js', 
+                        'src/js/view/nav.js',
                         'src/js/view/album.js',
                         'src/js/app.js'], 
                     dest: 'public/js/concat/bundle.js'

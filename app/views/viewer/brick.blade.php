@@ -22,9 +22,7 @@ brick
 @section('js')
     <script>
 
-        var brickViewerJSON = {
-
-        };
+        var brickViewerJSON = {{ $initJSON }};
     
         H.init(brickViewerJSON);
         

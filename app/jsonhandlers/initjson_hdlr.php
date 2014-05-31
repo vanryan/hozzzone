@@ -4,7 +4,7 @@
 
     	public $uid;
 
-    	private $name = 'item';
+    	public $name = 'item';
 
     	//public $attrs = new StdClass;
     	//$attrs->className = 'item';  // not working in php 5
@@ -23,7 +23,7 @@
 
     	public $uid;
 
-    	private $name = 'likeButton', $likeId = '82942934294';
+    	public $name = 'likeButton', $likeId = '82942934294';
 
     	protected $attrs;
 
@@ -43,7 +43,7 @@
     for($i=0;$i<$default_item_num;$i++){
     	$defitems[$i] = new defaultitem;
     	$defitems[$i]->uid = 'item-'.($i+1);
-    	$defitems[$i]->children = $defitemKids[$i];
+    	$defitems[$i]->children = array($defitemKids[$i]);
     	$defitems[$i]->data = $data_list[$i];
     }
 

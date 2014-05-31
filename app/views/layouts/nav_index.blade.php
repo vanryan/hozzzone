@@ -1,4 +1,4 @@
-<div id="nav">
+<div class="nav" id="nav">
     <div class="user">
         <div class="avatar">
             <img src="../src/img/avatar.png" alt="user.name">

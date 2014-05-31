@@ -514,6 +514,10 @@ H.views.searchBox = H.View.extend({
 });
 ;var H = H || {};
 
+
+H.views.Navigate = H.View.extend();
+;var H = H || {};
+
 H.views.Album = H.View.extend({
 
 });

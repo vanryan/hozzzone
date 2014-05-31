@@ -1,0 +1,108 @@
+.full_screen {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+
+%input {
+    padding: 10px;
+    border-radius: 3px;
+    margin: 0 auto 20px;
+}
+
+%shadow {
+    border: 0;
+    box-shadow: 1px 1px 10px 2px #555;
+    display: block;
+    opacity: .8;
+    background: #fff;
+}
+
+.logreg-main-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.loginBox {
+    width: 500px;
+    height: 300px;
+    position: relative;
+    top: 50%;
+    margin: 0 auto;
+    margin-top: -200px;
+    padding: 21px 18px;
+    border-radius: 8px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
+    .email {
+        @extend %input;
+        @extend %shadow;
+        width: 200px;
+    }
+    .password {
+        @extend %input;
+        @extend %shadow;
+        width: 150px;
+    }
+
+    .loginBtn {
+        @extend %shadow;
+        margin: 8px auto 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        text-indent: -10000px;
+        background: url() #fff no-repeat 50% 50%;
+    }
+
+    .regLink {
+        @extend %shadow;
+        display: block;
+        width: 30px;
+        text-align: center;
+        margin: 18px auto 0;
+        padding: 6px 10px;
+        border-radius: 20px;
+    }
+
+    .footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 21px 18px;
+        overflow: hidden;
+    }
+
+    .recommendAuthor {
+        @extend %shadow;
+        padding: 6px 10px;
+        padding-left: 30px;
+        border-radius: 3px;
+        float: left;
+    }
+
+    .thirdPartyLogin {
+        @extend %shadow;
+        padding: 4px 10px;
+        border-radius: 3px;
+        float: right;
+    }
+}

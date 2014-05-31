@@ -7,8 +7,6 @@ $sub-color: #ddd;
 $box-color: blue;
 $font-color: #999;
 
-$main-box-padding-top: 33px;
-
 
 // nav
 $navLinkColor: #5e5e5e;
@@ -46,10 +44,10 @@ $defaultItemPostContentMarginLeft: 18px;
 
 
 // square viewer
-$squareViewerWidth: 921px;
-$squareItemMarginRight: 37px;
+$squareViewerWidth: 918px;
+$squareItemMarginLeftRight: 18px;
 $squareItemMarginBottom: 28px;
-$squareItemImgWidth: ($squareViewerWidth - $squareItemMarginRight * 3) / 3;
+$squareItemImgWidth: ($squareViewerWidth - $squareItemMarginLeftRight * 2 * 3) / 3;
 $squareItemShadowPadding: 25px;
 $squareItemShadowFontColor: #f2f2f2;
 $squareItemAvatarMarginRight: 8px;
@@ -128,6 +126,16 @@ a {
     color: $font-color;
 }
 
+.bars {
+    background: #fff;
+    border-bottom: 8px solid #999;
+    z-index: 4000;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 .outer-box {
     width: 100%;
     position: relative;
@@ -143,7 +151,6 @@ a {
 
 
 #main-box {
-    padding-top: $main-box-padding-top;
 
     .img-overlay {
         opacity: 0;
@@ -243,4 +250,6 @@ a {
 @import "viewer/brick";
 @import "album/album";
 @import "album/albumComment";
+@import "logreg/login";
+@import "logreg/register";
 @import "mq/mq";
