@@ -12,7 +12,7 @@ class CreateImageindsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('imageInds', function(Blueprint $table)
+		Schema::create('imageinds', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
 			$table->string('filename',64)->unique();
@@ -38,7 +38,7 @@ class CreateImageindsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('imageInds', function(Blueprint $table)
+		Schema::table('imageinds', function(Blueprint $table)
 		{
 			Schema::drop('imageInds');
 		});
