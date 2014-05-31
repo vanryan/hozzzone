@@ -19,7 +19,7 @@ Route::get('/',
 		'as'=>'index',
 		function(){
             if(Auth::check()) {
-                $viewer = 'default'; 
+                $viewer = 'square'; 
                 // see if user has a pre-selected viewer
                 // and put it in $viewer...
 
@@ -66,11 +66,14 @@ Route::get('/',
 					// $item->hit: times the pic get liked
 					// 
 					//$items
-					'items'=>$items,
+					'items' => $items,
 
 					// @ $initJSON: a json array for initiating the apps
 					//$initJSON
-					'initJSON'=>json_encode($initJSON)
+                    'initJSON' => json_encode($initJSON),
+                    
+                    // @ $viewer: a string for determining active icon in '.rightBar .layout'
+                    'viewer' => $viewer
 					));
             }
 			else

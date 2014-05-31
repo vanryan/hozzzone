@@ -1,2 +1,22 @@
 .rightBar {
+    float: right;
+
+    >div {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 10px;
+    }
+
+    .layout {
+        display: none;
+    }
+
+
+    .hot {
+        display: none;
+    }
+
+    .search-text {
+        width: 10px;
+    }
 }

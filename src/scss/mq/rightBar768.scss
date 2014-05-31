@@ -1,0 +1,20 @@
+.rightBar {
+
+
+    
+    .layout {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        .active {
+            display: block;
+            width: 40px;
+            height: 40px;
+            background: teal;
+        }
+    }
+
+    .search-text {
+        width: 100px;
+    }
+}

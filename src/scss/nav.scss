@@ -1,6 +1,4 @@
 .nav {
-    overflow: hidden;
-
     .user {
         float: left;
     }
@@ -29,6 +27,8 @@
         &:hover {
             ul {
                 display: block;
+                background: #fff;
+                z-index: 4000;
             }
         }
     }
