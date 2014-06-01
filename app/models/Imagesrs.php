@@ -3,16 +3,16 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Imageind extends Eloquent implements UserInterface, RemindableInterface {
+class Imagesrs extends Eloquent implements UserInterface, RemindableInterface {
 
-	protected $fillable=['filename','upuid','upuicon','upuname','srseq','srid','srcover','hits'];
+	protected $fillable=['srname','srdepict','auid','auicon','auname'];
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'imageinds';
+	protected $table = 'imagesrs';
 
 
 	/**

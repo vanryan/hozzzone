@@ -1,15 +1,113 @@
 <?php
 	
-	class hoz_initjson_app{
-        // Creating a initjson in an 'app' manner
+    /*
+    <Major parts of the ending json objects
+    */
+
+    class hoz_json_modules_init{
+        // Creating the modules -- the necessary object in all backbone jsons
+        public $uid, $name, $children;
+
+        public function __construct($name,$place,$genre){
+                $this->uid = $name;
+                $this->name = $name;
+
+                $object1 = hoz_json_unit_factory::factory('items',$place);
+                //var_dump($object1);exit();
+                $object2 = hoz_json_unit_factory::factory('rightbar');
+                //var_dump($object2);exit();
+                $object3 = hoz_json_unit_factory::factory('nav');
+                //var_dump($object3);exit();
+
+                $this->children = array(
+                    $object1,
+                    $object2,
+                    $object3
+                    );
+        } 
+    }
+
+    class hoz_json_modules_ajax{
+        public static function produce($name,$place,$genre){
+            if($place == 'default' || $place == 'brick' || $place == 'square'){
+                // Ajax JSON modules for Views
+                return hoz_json_unit_factory::factory('items',$place);
+            } // end- if($place == 'default' || $place == 'brick' || $place == 'square')
+        }
+    }
+    /*
+    >End- Major parts of the ending json object
+    */
+    
+    /*
+    <Factories for Major parts of the ending json object
+    */
+
+    class hoz_json_html_factory{
+        public static function factory($type,$name,$place,$genre){
+            /*
+            @parameters
+            $type: json type : 'init', 'ajax'
+            $name: :'app', 'sec'
+            $place: Page : 'default', 'brick' ...
+            */
+            if($type == 'ajax' && $name == 'sec')
+                if($genre == 'items'){
+                    return View::make('layouts.' . $place . 'Items', array(
+                        ));
+                }
+                
+        }
+    }
+
+    class hoz_json_modules_factory{
+        public static function factory($type,$name,$place,$genre){
+            if($type == 'init'){
+                $tmp_classname = 'hoz_json_modules_'.$type;
+                return new $tmp_classname($name,$place,$genre);
+            }              
+            elseif($type == 'ajax')
+                return hoz_json_modules_ajax::produce($name,$place,$genre);
+        }
+    }
+
+    /*
+    >End-Factories for Major parts of the ending json object
+    */
+
+    
+    
+    /*
+    <Ending json objects
+    */
+
+    class hoz_initjson_app{
+        // Creating an initjson in an 'app' manner
 
         public $modules; 
 
-        public function __construct($type,$name,$place){
-            $this->modules = new hoz_json_modules($type,$name,$place);
+        public function __construct($type,$name,$place,$genre){
+            $this->modules = hoz_json_modules_factory::factory($type,$name,$place,$genre);
 
         }
     }
+
+    class hoz_ajaxjson_sec{
+        // Creating an ajaxjson in an 'sec'(sector/ partial) manner
+
+        public $html,$modules;
+
+        public function __construct($type,$name,$place,$genre){
+            $this->html = hoz_json_html_factory::factory($type,$name,$place,$genre);
+            $this->modules = hoz_json_modules_factory::factory($type,$name,$place,$genre);
+        }
+
+    }
+
+    /*
+    >End- Ending json objects
+    */
+
 
 
 

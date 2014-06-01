@@ -20,12 +20,13 @@ class CreateImageindsTable extends Migration {
 
 			$table->bigInteger('upuid');
 			$table->string('upuname',32);
-			$table->string('upuicon',42)->nullable();
+			$table->string('upuicon',42)->nullable()->default('default_avatar');
 			
 			$table->timestamps();
 
-			$table->integer('grpid')->default(0);
-			$table->integer('srsid')->default(0);
+			$table->tinyInteger('srseq')->default(0);
+			$table->integer('srid')->default(0);
+			$table->tinyInteger('srcover')->default(0);
 
 			$table->integer('hits')->default(0);
 		});

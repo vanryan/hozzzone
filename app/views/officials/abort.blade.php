@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('base')
 
 @section('title')
 	You have no right!

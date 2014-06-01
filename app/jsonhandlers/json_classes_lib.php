@@ -37,7 +37,7 @@ class hoz_json_unit_items{
             $this->attrs = new hoz_json_gadget_attrs($args[0]);
             $this->data = new hoz_json_gadget_data_onlycreatedtime;
             
-            $data = new hoz_dataplane_items('init',$args[0]);
+            $data = hoz_dataplane_factory::factory('init',$args[0],'items');
 
             for($i=0;$i < Config::get('hoz_global_vars.'. $args[0] .'_item_num');$i++)
             {
