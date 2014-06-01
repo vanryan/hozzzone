@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration {
 			$table->tinyInteger('uintend')->default(3);
 			$table->smallInteger('ucity')->nullable();
 			$table->string('udepict',333)->nullable();
+			$table->tinyInteger('udefview')->default(1);
 
 			/* posts & hoards */
 			$table->mediumInteger('urepost')->default(0);

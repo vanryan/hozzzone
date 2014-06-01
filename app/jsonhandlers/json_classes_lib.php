@@ -1,6 +1,6 @@
 <?php
 // Gadgets -- under units
-class hoz_initjson_attrs{
+class hoz_json_gadget_attrs{
     public $className;
 
     public function __construct($cname){
@@ -8,15 +8,7 @@ class hoz_initjson_attrs{
     }
 }
 
-class hoz_initjson_data{
-    public $itemId, $author, $time, $hits;
-
-    public function __construct(){
-        $this->createdAt = date('YmdHis',time());
-    }
-}
-
-class hoz_initjson_data_onlycreatedtime{
+class hoz_json_gadget_data_onlycreatedtime{
     public $createdAt;
 
     public function __construct(){
@@ -26,7 +18,7 @@ class hoz_initjson_data_onlycreatedtime{
 
 // Units
 
-class hoz_initjson_items{
+class hoz_json_unit_items{
 	public $uid, $name, $attrs, $data, $children;
     	// $uid, $name: string
     	// $attrs, $data: object
@@ -38,26 +30,28 @@ class hoz_initjson_items{
         	// Expected: array($place) 
             // $place: 'default', 'brick', 'square' ... 
 
+            $args=$args[0];
+
         	$this->uid = $args[0] . 'Items';
         	$this->name = $args[0] . 'Items';
-            $this->attrs = new hoz_initjson_attrs($args[0]);
-            $this->data = new hoz_initjson_data_onlycreatedtime;
+            $this->attrs = new hoz_json_gadget_attrs($args[0]);
+            $this->data = new hoz_json_gadget_data_onlycreatedtime;
             
-            $datalist = new hoz_dataplane_items('init',$args[0]);
+            $data = new hoz_dataplane_items('init',$args[0]);
 
-            for($i=0;$i<Config::get('hoz_global_vars.'. $args[0] .'_item_num');$i++)
+            for($i=0;$i < Config::get('hoz_global_vars.'. $args[0] .'_item_num');$i++)
             {
                 $children_obj_array[$i] = (object) array(
                     'uid'=>'item-' . ($i+1),
                     'name'=>'item',
-                    'attrs'=>new hoz_initjson_attrs('item'),
+                    'attrs'=>new hoz_json_gadget_attrs('item'),
                     'children'=>array( (object) array(
                         'uid'=>'button-' . ($i+1),
                         'name'=>'likeButton',
                         'likeId'=>'82942934294',
-                        'attrs'=>new hoz_initjson_attrs('like')
+                        'attrs'=>new hoz_json_gadget_attrs('like')
                         )),
-                    'data'=>$datalist[$i]
+                    'data'=>$data->datalist[$i]
                     );
             }
 
@@ -65,13 +59,13 @@ class hoz_initjson_items{
         }
     }
 
-    class hoz_initjson_nav{
+    class hoz_json_unit_nav{
 
     	public $uid='nav', $name = 'Navigate', $children = array();
 
     }
 
-    class hoz_initjson_rightbar{
+    class hoz_json_unit_rightbar{
 
     	public function __construct(){
 

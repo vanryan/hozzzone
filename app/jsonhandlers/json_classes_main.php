@@ -11,7 +11,9 @@
         }
     }
 
-    class hoz_initjson_unit_factory{
+
+
+    class hoz_json_unit_factory{
         /* 
         A factory class for units of initjson
         
@@ -29,7 +31,10 @@
         public function __construct($classname){
             $factory_args = func_get_args(); // func_get_args() returns an array
             $class_args = array_slice( $factory_args, 1 );
-            $whole_classname = "hoz_initjson_unit_" . $classname;
+            $whole_classname = "hoz_json_unit_" . $classname;
+
+            //var_dump($factory_args) ;
+            //exit();
             if($object = new $whole_classname($class_args))
                 return $object;
             else 

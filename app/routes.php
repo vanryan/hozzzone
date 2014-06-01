@@ -20,7 +20,10 @@ Route::get('/',
 		'as'=>'index',
 		function(){
             if(Auth::check()) {
-                $viewer = 'square'; 
+            	$user = Auth::user();
+                $viewer = $user->udefview; 
+                $viewer = Config::get('hoz_global_vars.udefview.'.$viewer);
+
                 // see if user has a pre-selected viewer
                 // and put it in $viewer...
 
@@ -33,25 +36,7 @@ Route::get('/',
                 
                 require_once('jsonhandlers/json_hdlr_main.php');         
 
-                $defaultItems = array(
-                	'uid'=>'defaultItems',
-                	'name'=>'defaultItems',
-                	'attrs'=>(object)array( 'className'=>'default' ),
-                	'data'=>(object)array( 'createdAt'=>date('YmdHis',time()) ),
-                	'children'=>$defitems
-                	);
-
-                $defaultItems = (object)$defaultItems;
-
-                $initJSON = array(
-					'modules' => array(
-						'uid'=>'app',
-						'name'=>'app',
-						'children'=>array(
-							$defaultItems, $rightBar, $nav
-							)
-						)
-					);
+                $initJSON = new hoz_json_factory('init','app',$viewer);
 
 				return View::make('viewer.' . $viewer, array(
 					// The default means 'dynatorrent' styled index page
