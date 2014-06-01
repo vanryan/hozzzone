@@ -1,0 +1,45 @@
+.loginRegBox {
+    .registerForm {
+        text-align: center;
+        .email {
+            width: 150px;
+            display: inline-block;
+            margin-right: 40px;
+        }
+        .password {
+            display: inline-block;
+        }
+    }
+
+    .repassword {
+       @extend %input; 
+       @extend %shadow;
+       width: 150px;
+    }
+
+    .captcha {
+        text-align: center;
+        padding-top: 5px;
+
+        img {
+            width: 70px;
+            height: 30px;
+            vertical-align: middle;
+        }
+    }
+
+    .captchaText {
+        width: 50px;
+        height: 10px;
+        @extend %shadow;
+        @extend %input;
+        vertical-align: middle;
+        display: inline-block;
+        margin: 0;
+    }
+
+    .registerBtn {
+        box-sizing: content-box;
+    }
+
+}

@@ -10,27 +10,20 @@
         <!--<img src="/hozzzone/public/img/bg.jpg" alt="">-->
     </div>
     <div id="app" class="logreg-main-box">
-        <div class="loginBox" id="Login" style="background-image: url(/hozzzone/public/img/davinci.jpg);">
-            <div class="loginForm">
-                <form action="/" method="post">
-                    <input class="email" type="text" placeholder="邮箱">
-                    <input class="password" type="password" placeholder="密码">    
-                    <button class="loginBtn">登录</button>
-                </form>
-                <a class="regLink" href="">注册</a>
-                <div class="footer">
-                    <div class="recommendAuthor">
-                        <img src="" alt="">
-                        <span>Heavenly Creature</span>
-                    </div>
-                    <div class="thirdPartyLogin">
-                        <span>快捷登录</span>
-                        <ul class="thirdParties">
-                            <li><a class="tpLoginLink" id="tencent" href=""></a></li>
-                            <li><a class="tpLoginLink" id="weibo" href=""></a></li>
-                            <li><a class="tpLoginLink" id="douban" href=""></a></li>
-                        </ul>
-                    </div>
+        <div class="loginRegBox" id="Login" style="background-image: url(/hozzzone/public/img/davinci.jpg);">
+            include "loginForm.html"
+            <div class="footer">
+                <div class="recommendAuthor">
+                    <img src="" alt="">
+                    <span>Heavenly Creature</span>
+                </div>
+                <div class="thirdPartyLogin">
+                    <span>快捷登录</span>
+                    <ul class="thirdParties">
+                        <li><a class="tpLoginLink" id="tencent" href=""></a></li>
+                        <li><a class="tpLoginLink" id="weibo" href=""></a></li>
+                        <li><a class="tpLoginLink" id="douban" href=""></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
