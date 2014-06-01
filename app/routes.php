@@ -11,6 +11,7 @@
 |
 */
 
+
 /*
 Index
 */
@@ -26,13 +27,11 @@ Route::get('/',
 
                 // Here I send stuff into the default or dynatorrent view 
 
-                // Settings
-				$default_item_num = 5;  // The number of items(Big pictures in default page)
-				// End of settings
+				require_once('dataplanes/dataplane_main.php');
 
                 require_once('bladehandlers/default_items_hdlr.php');
                 
-                require_once('jsonhandlers/initjson_hdlr.php');            
+                require_once('jsonhandlers/json_hdlr_main.php');         
 
                 $defaultItems = array(
                 	'uid'=>'defaultItems',

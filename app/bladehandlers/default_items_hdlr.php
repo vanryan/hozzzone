@@ -6,9 +6,9 @@
 
 
 
-	$item_data = Imageind::take($default_item_num)->get(array('upuname','upuicon','filename','imgtitle','hits'));
+	$item_data = Imageind::take(Config::get('hoz_global_vars.default_item_num'))->get(array('upuname','upuicon','filename','imgtitle','hits'));
 
-	for($i=0;$i<$default_item_num;$i++)
+	for($i=0;$i<Config::get('hoz_global_vars.default_item_num');$i++)
 	{
 		$items[$i] = new defBld_item;
 		$items[$i]->authorname = $item_data[$i]->upuname;
