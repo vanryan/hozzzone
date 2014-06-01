@@ -36,7 +36,9 @@ Route::get('/',
                 
                 require_once('jsonhandlers/json_hdlr_main.php');         
 
-                $initJSON = new hoz_json_factory('init','app',$viewer);
+                $initJSON = hoz_json_factory::factory('init','app',$viewer);
+
+                var_dump($initJSON); exit();
 
 				return View::make('viewer.' . $viewer, array(
 					// The default means 'dynatorrent' styled index page

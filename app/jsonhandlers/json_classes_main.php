@@ -28,7 +28,7 @@
 
         */
 
-        public function __construct($classname){
+        public static function factory($classname){
             $factory_args = func_get_args(); // func_get_args() returns an array
             $class_args = array_slice( $factory_args, 1 );
             $whole_classname = "hoz_json_unit_" . $classname;
@@ -36,7 +36,10 @@
             //var_dump($factory_args) ;
             //exit();
             if($object = new $whole_classname($class_args))
+            {
                 return $object;
+            }
+                
             else 
                 throw new Exception('No such class, dude.');
         }

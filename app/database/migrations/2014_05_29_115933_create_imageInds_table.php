@@ -38,10 +38,7 @@ class CreateImageindsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('imageinds', function(Blueprint $table)
-		{
-			Schema::drop('imageInds');
-		});
+		Schema::drop('imageinds');
 	}
 
 }

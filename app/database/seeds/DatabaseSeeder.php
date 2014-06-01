@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('UserTableSeeder');
 
-        $this->call('ImageIndsTableSeeder');
+        $this->call('ImageindsTableSeeder');
 
         $this->command->info('User table seeded!');
 	}

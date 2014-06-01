@@ -16,22 +16,28 @@
                 $this->uid = $name;
                 $this->name = $name;
 
-                $object1 = new hoz_json_unit_factory('items',$place);
-                $object2 = new hoz_json_unit_factory('rightbar');
-                $object3 = new hoz_json_unit_factory('nav');
+                $object1 = hoz_json_unit_factory::factory('items',$place);
+                //var_dump($object1);exit();
+                $object2 = hoz_json_unit_factory::factory('rightbar');
+                //var_dump($object2);exit();
+                $object3 = hoz_json_unit_factory::factory('nav');
+                //var_dump($object3);exit();
 
-                $children = array(
+                $this->children = array(
                     $object1,
                     $object2,
                     $object3
                     );
+
+
+
             }
         }
     }
 
     class hoz_json_factory{
         // The root factory for json in hozzz
-        public function __construct($type,$name,$place){
+        public static function factory($type,$name,$place){
             /*
             @e.g.
             $initJSON = new hoz_json_factory('init','app','default');
@@ -48,8 +54,10 @@
             // Note the sequence. Watch for the definitions.
             
             $whole_classname = 'hoz_'. $type .'json_'. $name;
-            if($object = new $whole_classname($type,$name,$place) )
+            if($object = new $whole_classname($type,$name,$place) ){
                 return $object;
+            }
+                
             else 
                 throw new Exception('No such thing, dude.');
         }

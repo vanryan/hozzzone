@@ -66,30 +66,27 @@ class hoz_json_unit_items{
     }
 
     class hoz_json_unit_rightbar{
+        public $uid,$name,$children;
 
-    	public function __construct(){
+    	public function  __construct(){
+            $this->uid = 'rightBar';
+            $this->name = 'rightBar';
 
-    		$rightBar = array(
-    			'uid'=>'rightBar',
-    			'name'=>'rightBar',
-    			'children'=>array(
-    				(object) array(
-    					'uid'=>'viewLayout',
-    					'name'=>'viewLayout',
-    					'children'=>array(
-    						(object) array('uid'=>'layoutButton-1','name'=>'layoutButton','data'=> (object) array('view'=>'default')),
-    						(object) array('uid'=>'layoutButton-2','name'=>'layoutButton','data'=> (object) array('view'=>'square')),
-    						(object) array('uid'=>'layoutButton-3','name'=>'layoutButton','data'=> (object) array('view'=>'brick')),
-    						)
-    					),
-    				(object) array('uid'=>'searchBox','name'=>'searchBox'),
-    				(object) array('uid'=>'addHoz','name'=>'addHoz','data'=>(object)null)
-    				)
-    			);
+            $children_tmp = array(
+                    (object) array(
+                        'uid'=>'viewLayout',
+                        'name'=>'viewLayout',
+                        'children'=>array(
+                            (object) array('uid'=>'layoutButton-1','name'=>'layoutButton','data'=> (object) array('view'=>'default')),
+                            (object) array('uid'=>'layoutButton-2','name'=>'layoutButton','data'=> (object) array('view'=>'square')),
+                            (object) array('uid'=>'layoutButton-3','name'=>'layoutButton','data'=> (object) array('view'=>'brick')),
+                            )
+                        ),
+                    (object) array('uid'=>'searchBox','name'=>'searchBox'),
+                    (object) array('uid'=>'addHoz','name'=>'addHoz','data'=>(object)null)
+                    );
 
-    		$rightBar = (object)$rightBar;
-
-    		return $rightBar;
+    		$this->children = $children_tmp;
     	}
     	
     }
