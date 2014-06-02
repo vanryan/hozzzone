@@ -23,17 +23,9 @@
 					$items = $items->datalist;
 					for($i=0;$i<Config::get('hoz_global_vars.' . $intention . '_num');$i++)
 					{
-<<<<<<< HEAD
-						
-						$items[$i] = new hoz_viewBld_item;
-						$items[$i]->authorname = $item_data[$i]->upuname;
-						$items[$i]->avatar = $item_data[$i]->upuicon;
-						$items[$i]->img = $item_data[$i]->filename;
-						$items[$i]->title = $item_data[$i]->imgtitle;
-						$items[$i]->hit = $item_data[$i]->hits; 
-=======
+
 						$items[$i]->subItems = array(); 
->>>>>>> 7ea76e312afce1a2d265e74e9570f3da17e1835f
+
 					} // End- if($intention == 'default' || $intention == 'sqaure' || $intention == 'brick')
 
 					return $items;
@@ -52,10 +44,12 @@
 	/*
 	<Class Lib
 	*/
+	/*
 	class hoz_viewBld_item{
 		public $authorname,$avatar,$img,$title,$hit;
 		public $subItems = array();
 	}
+	*/
 
 	/*
 	>End- Class Lib
