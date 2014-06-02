@@ -15,7 +15,7 @@ default
 
 @section('content')
     <ul class="default" id="defaultItems">
-    @include('layouts.defaultItem', array('items' => $items))
+    @include('layouts.defaultItems', array('items' => $items))
     </ul>
 @stop
 

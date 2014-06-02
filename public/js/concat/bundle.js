@@ -174,6 +174,9 @@ H.viewFactory = {
     create: function(viewModule) {
 
         // the parenthesis around 'H.loadViewConstructor(viewModule.name)' is very important!!!
+
+        // console.log(viewModule.name);
+
         var view = new (H.loadViewConstructor(viewModule.name))({
             // bind this view to the element via 'uid' throught the 'id' attr
             el: $('#' + viewModule.uid),
@@ -181,6 +184,12 @@ H.viewFactory = {
             name: viewModule.name,
             data: viewModule.data
         }); 
+
+        // set current viewer for ease of switch viewers
+        // when hit the view layout button on rightBar
+        if (/Items$/.test(viewModule.name)) {
+            H.currentViewer = view;
+        }
 
         if(viewModule.children) {
             view.children = _.map(viewModule.children, function(item) {
@@ -254,10 +263,16 @@ _.extend(H.Resource.prototype, {
     },
     _call: function(method) {
         var defer = new $.Deferred(),
-            // e.g /resource/hozzz/get/
-            requestURL = '/resource/' + this.name + '/' + method + '/',
+            // e.g /resource/hozzz/get
+            // I don't know what the hell is going here 
+            // If I keep the trailing slash, server side will keeps shouting 301 back
+            // and redirect me to some other url
+            // It may be a bug or something not that I know of
+            // Get the idea from:
+            // http://stackoverflow.com/questions/18934588/json-giving-301-moved-permanently
+            requestURL = '/hozzzone/public/resources/' + this.name + '/' + method,
             data = {
-                from: window.location.pathname,
+          //      from: window.location.pathname,
                 data: this.data
             }; 
 
@@ -443,9 +458,17 @@ H.views.viewLayout = H.View.extend({
         'click li': 'changeViewLayout',
     },
     changeViewLayout: function(e) {
-        var view = this.findChildViewByElement($(e.currentTarget))[0];
+        var view = this.getChildViewByElement($(e.currentTarget));
         console.log('change to view: ' + view.data.view);
 
+        var newViewer = H.resourceFactory(view.data.view + 'Items', {});
+
+        newViewer.get({
+            success: function(responseViewData) {
+                console.log(reponseViewData); 
+                H.currentViewer.replaceWith(reponseViewData);
+            }
+        });
 
         return false;
     }

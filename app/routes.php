@@ -84,7 +84,7 @@ Route::get( '/',
 /*
 Ajax
 */
-Route::get( '/resources/{intention}/{method}', function() {
+Route::get( '/resources/{intention}/{method}', function($intention, $method) {
 
 		/*
 		@e.g.
@@ -103,7 +103,8 @@ Route::get( '/resources/{intention}/{method}', function() {
 		if ( Request::ajax() ) {
 			// If The Request Is Using AJAX
 
-			$ajaxJSON = hoz_json_factory::factory( 'ajax', 'sec', $intention, $method, Input::get('data'));
+	    	$ajaxJSON = hoz_json_factory::factory( 'ajax', 'sec', $intention, $method, Input::get('data'));
+
 
 			return Response::json($ajaxJSON);
 
@@ -114,7 +115,7 @@ Route::get( '/resources/{intention}/{method}', function() {
 		} // end- if(Request::ajax())
 	} );
 
-Route::post( '/resources/{intention}/{method}', function() {
+Route::post( '/resources/{intention}/{method}', function($intention, $method) {
 
 		/*
 		@parameters
