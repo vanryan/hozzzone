@@ -1,4 +1,3 @@
-<ul class="default" id="defaultItems">
 @foreach ($items as $key=>$item)
     <li class="item" id="item-{{ $key + 1 }}">
         <div class="avatar">
@@ -21,4 +20,3 @@
         </div>
     </li>
 @endforeach
-</ul>

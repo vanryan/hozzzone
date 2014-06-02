@@ -32,7 +32,7 @@
                 height: auto;
                 width: auto;
             }
-            a {
+            i {
                 display: block;
                 width: 25px;
                 height: 16px;
@@ -40,22 +40,22 @@
             &:hover {
                 border-left: 1px solid #a5a5a5;
             }
-            &.default:hover a {
+            &.default:hover i {
                 background: url(../img/active_default_view.png);
             }
-            &.default a {
+            &.default i {
                 background: url(../img/default_view.png);
             }
-            &.square:hover a {
+            &.square:hover i {
                 background: url(../img/active_square_view.png)
             }
-            &.square a {
+            &.square i {
                 background: url(../img/square_view.png);
             }
-            &.brick a {
+            &.brick i {
                 background: url(../img/brick_view.png)
             }
-            &.brick:hover a {
+            &.brick:hover i {
                 background: url(../img/active_brick_view.png);
             }
         }

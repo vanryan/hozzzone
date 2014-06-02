@@ -1,9 +1,9 @@
 <div id="rightBar" class="rightBar">
     <div class="layout">
         <ul class="viewer" id="viewLayout">
-            <li class="default{{ $viewer === 'default' ? ' active' : '' }}" id="layoutButton-1"><a href="#"></a></li>
-            <li class="square{{ $viewer === 'square' ? ' active' : '' }}" id="layoutButton-2"><a href="#"></a></li>
-            <li class="brick{{ $viewer === 'brick' ? ' active' : '' }}" id="layoutButton-3"><a href="#"></a></li>
+            <li class="default{{ $viewer === 'default' ? ' active' : '' }}" id="layoutButton-1"><i></i></li>
+            <li class="square{{ $viewer === 'square' ? ' active' : '' }}" id="layoutButton-2"><i></i></li>
+            <li class="brick{{ $viewer === 'brick' ? ' active' : '' }}" id="layoutButton-3"><i></i></li>
         </ul>
     </div>
     <a class="add" id="addHoz">添加</a>

@@ -1,7 +1,7 @@
 /*!
  * hozzz
  * @version 0.0.0
- * @time 2014-06-02 21:35
+ * @time 2014-06-02 23:25
  */
 
 /** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
@@ -830,7 +830,7 @@ a {
     height: auto;
     width: auto;
   }
-  .rightBar .viewer li a {
+  .rightBar .viewer li i {
     display: block;
     width: 25px;
     height: 16px;
@@ -838,22 +838,22 @@ a {
   .rightBar .viewer li:hover {
     border-left: 1px solid #a5a5a5;
   }
-  .rightBar .viewer li.default:hover a {
+  .rightBar .viewer li.default:hover i {
     background: url(../img/active_default_view.png);
   }
-  .rightBar .viewer li.default a {
+  .rightBar .viewer li.default i {
     background: url(../img/default_view.png);
   }
-  .rightBar .viewer li.square:hover a {
+  .rightBar .viewer li.square:hover i {
     background: url(../img/active_square_view.png);
   }
-  .rightBar .viewer li.square a {
+  .rightBar .viewer li.square i {
     background: url(../img/square_view.png);
   }
-  .rightBar .viewer li.brick a {
+  .rightBar .viewer li.brick i {
     background: url(../img/brick_view.png);
   }
-  .rightBar .viewer li.brick:hover a {
+  .rightBar .viewer li.brick:hover i {
     background: url(../img/active_brick_view.png);
   }
   .rightBar .add {

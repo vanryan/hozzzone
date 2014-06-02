@@ -35,7 +35,7 @@ class hoz_json_unit_brickItems extends hoz_json_unit_items{
     }
 }
 
-class hoz_json_unit_sqaureItems extends hoz_json_unit_items{
+class hoz_json_unit_squareItems extends hoz_json_unit_items{
     public function __construct() {
         $args = func_get_args(); 
         // func_get_args() returns an array

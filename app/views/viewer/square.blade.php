@@ -15,7 +15,7 @@ square
 
 @section('content')
     <ul class="square" id="squareItems">
-    @include('layouts.squareItems', array('items' => $items))
+    @include('layouts.squareItem', array('items' => $items))
     </ul>
 @stop
 

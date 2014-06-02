@@ -455,7 +455,7 @@ H.views.rightBar = H.View.extend();
 
 H.views.viewLayout = H.View.extend({
     events: {
-        'click li': 'changeViewLayout',
+        'click li:not(.active)': 'changeViewLayout',
     },
     changeViewLayout: function(e) {
         var view = this.getChildViewByElement($(e.currentTarget));
@@ -465,12 +465,10 @@ H.views.viewLayout = H.View.extend({
 
         newViewer.get({
             success: function(responseViewData) {
-                console.log(reponseViewData); 
-                H.currentViewer.replaceWith(reponseViewData);
+                console.log(responseViewData); 
+                H.currentViewer.replaceWith(responseViewData);
             }
         });
-
-        return false;
     }
 });
 
