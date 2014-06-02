@@ -49,10 +49,16 @@ _.extend(H.Resource.prototype, {
     },
     _call: function(method) {
         var defer = new $.Deferred(),
-            // e.g /resource/hozzz/get/
-            requestURL = '/resource/' + this.name + '/' + method + '/',
+            // e.g /resource/hozzz/get
+            // I don't know what the hell is going here 
+            // If I keep the trailing slash, server side will keeps shouting 301 back
+            // and redirect me to some other url
+            // It may be a bug or something not that I know of
+            // Get the idea from:
+            // http://stackoverflow.com/questions/18934588/json-giving-301-moved-permanently
+            requestURL = '/hozzzone/public/resources/' + this.name + '/' + method,
             data = {
-                from: window.location.pathname,
+          //      from: window.location.pathname,
                 data: this.data
             }; 
 

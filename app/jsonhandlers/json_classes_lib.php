@@ -108,8 +108,9 @@ class hoz_json_unit_rightbar {
                     (object) array( 'uid'=>'layoutButton-3', 'name'=>'layoutButton', 'data'=> (object) array( 'view'=>'brick' ) ),
                 )
             ),
-            (object) array( 'uid'=>'searchBox', 'name'=>'searchBox' ),
-            (object) array( 'uid'=>'addHoz', 'name'=>'addHoz', 'data'=>(object)null )
+            (object) array( 'uid'=>'searchForm', 'name'=>'searchForm' ),
+            (object) array( 'uid'=>'addHoz', 'name'=>'addHoz', 'data'=>(object)null ),
+            (object) array('uid' => 'backToTop', 'name' => 'backToTop')
         );
 
         $this->children = $children_tmp;

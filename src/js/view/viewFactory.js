@@ -24,6 +24,9 @@ H.viewFactory = {
     create: function(viewModule) {
 
         // the parenthesis around 'H.loadViewConstructor(viewModule.name)' is very important!!!
+
+        // console.log(viewModule.name);
+
         var view = new (H.loadViewConstructor(viewModule.name))({
             // bind this view to the element via 'uid' throught the 'id' attr
             el: $('#' + viewModule.uid),
@@ -31,6 +34,12 @@ H.viewFactory = {
             name: viewModule.name,
             data: viewModule.data
         }); 
+
+        // set current viewer for ease of switch viewers
+        // when hit the view layout button on rightBar
+        if (/Items$/.test(viewModule.name)) {
+            H.currentViewer = view;
+        }
 
         if(viewModule.children) {
             view.children = _.map(viewModule.children, function(item) {

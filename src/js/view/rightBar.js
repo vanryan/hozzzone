@@ -10,9 +10,17 @@ H.views.viewLayout = H.View.extend({
         'click li': 'changeViewLayout',
     },
     changeViewLayout: function(e) {
-        var view = this.findChildViewByElement($(e.currentTarget))[0];
+        var view = this.getChildViewByElement($(e.currentTarget));
         console.log('change to view: ' + view.data.view);
 
+        var newViewer = H.resourceFactory(view.data.view + 'Items', {});
+
+        newViewer.get({
+            success: function(responseViewData) {
+                console.log(reponseViewData); 
+                H.currentViewer.replaceWith(reponseViewData);
+            }
+        });
 
         return false;
     }
