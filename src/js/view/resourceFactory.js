@@ -11,22 +11,38 @@ _.extend(H.Resource.prototype, {
     call: function(method, callbacks) {
         var promise = this._call(method);
 
-        promise.fail(function(err) {
-            // console.log(err);
-        });
-
+        // customized success callback
         if(callbacks && callbacks.success) {
             promise.done(callbacks.success);
         }
 
+        // customized fail callback
         if(callbacks && callbacks.error) {
             promise.fail(callbacks.error);
         }
 
+        // customized always callback
         if(callbacks && callbacks.complete) {
             // whatever success or eroors, always excecute
             promise.always(callbacks.complete);
         }
+
+        // default fail callback
+        promise.fail(function(err) {
+
+            // how to send get ajax to be evaluated as error
+            // and also send client json 
+            // that includes this 'msg' property
+            H.View.prototype.hideLoading();
+            H.View.prototype.errorNotify(err);
+
+        });
+
+        // default success callback
+        promise.done(function() {
+            H.View.prototype.hideLoading();
+        });
+
         return promise;
         // still returns a promise
         // for chaining more 'done, then, fail' kind of method
@@ -54,92 +70,7 @@ _.extend(H.Resource.prototype, {
                 }
 
                 if(textStatus === 'error') {
-                    var test_json = {
-                        html: '<ul class="default" id="defaultItems-1"> <li class="item" id="item-1"> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">client</span> </div> <div class="content"> <div class="front"> <div> <a href="" class="calbum"><img src="../src/img/img1.png" alt=""></a> </div> <div> <span class="title">男士 手提包 时尚元素</span><br> <a class="like" id="button-1"  href="#"><span>1054</span></a> </div> </div> <div class="peek"> <div class="sub-item"><a href=""><img src="" alt=""></a></div> </div> </div> </li> <li class="item" id="item-2"> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">client</span> </div> <div class="content"> <div class="front"> <div> <a href="" class="calbum"><img src="../src/img/img1.png" alt=""></a> </div> <div> <span class="title">男士 手提包 时尚元素</span><br> <a class="like" id="button-2"  href="#"><span>1054</span></a> </div> </div> <div class="peek"> <div class="sub-item"><a href=""><img src="" alt=""></a></div> </div> </div> </li> <li class="item" id="item-3"> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">client</span> </div> <div class="content"> <div class="front"> <div> <a href="" class="calbum"><img src="../src/img/img1.png" alt=""></a> </div> <div> <span class="title">男士 手提包 时尚元素</span><br> <a class="like" id="button-3"  href="#"><span>1054</span></a> </div> </div> <div class="peek"> <div class="sub-item"><a href=""><img src="" alt=""></a></div> </div> </div> </li> </ul>',
-                        view: {
-                            uid: 'defaultItems-1',
-                            name: 'defaultItems',
-                            attrs: {
-                                className: 'default'
-                            },
-                            data: {
-                                createdAt: '20140515092039'
-                            },
-                            children: [
-                                {
-                                    uid: 'item-1',
-                                    name: 'item',
-                                    attrs: {
-                                        className: 'item'
-                                    },
-                                    children: [
-                                        {
-                                            uid: 'button-1',
-                                            name: 'likeButton',
-                                            likeId: '82942934294',
-                                            attrs: {
-                                                className: 'like'
-                                            }
-                                        }   
-                                    ],
-                                    data: {
-                                        itemId: '239879342089304582304',
-                                        author: 'Brian Long',
-                                        time: '201405161129',
-                                        like: '1548'
-                                    }
-                                },
-                                {
-                                    uid: 'item-2',
-                                    name: 'item',
-                                    attrs: {
-                                        className: 'item'
-                                    },
-                                    data: {
-                                        itemId: '304582304',
-                                        author: 'B Long',
-                                        time: '20105161129',
-                                        like: '148'
-                                    },
-                                    children: [
-                                        {
-                                            uid: 'button-2',
-                                            name: 'likeButton',
-                                            likeId: '908203842042',
-                                            attrs: {
-                                                className: 'like'
-                                            }
-                                        }   
-                                    ]
-                                },
-                                {
-                                    uid: 'item-3',
-                                    name: 'item',
-                                    attrs: {
-                                        className: 'item'
-                                    },
-                                    children: [
-                                        {
-                                            uid: 'button-3',
-                                            name: 'likeButton',
-                                            likeId: '294829304242',
-                                            attrs: {
-                                                className: 'like'
-                                            }
-                                        }   
-                                    ],
-                                    data: {
-                                        itemId: '2398',
-                                        author: 'Brian asdfasLong',
-                                        time: '201405161129',
-                                        like: '154'
-                                    }
-                                }
-                            ]
-                        }
-                    };
-                    // return void defer.reject('error, fuck!');
-                     return void defer.reject(test_json);
+                     return void defer.reject('error, connection failed!');
                 }
 
                 var responseData = JSON.parse(jqXHR.responseText);

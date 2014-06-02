@@ -8,11 +8,9 @@
     </div>
     <a class="add" id="addHoz">添加</a>
     <div class="search">
-        <form>
-            <div class="searchBox" id="searchBox">
-                <input type="text" class="search-text" placeholder="寻找..">
-                <em class="search-img"></em>
-            </div>
+        <form class="searchForm" id="searchForm">
+            <input type="text" class="search-text" placeholder="寻找..">
+            <button class="search-img" type="submit"></button>
         </form>
     </div>
     <div class="hot">

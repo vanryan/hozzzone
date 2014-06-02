@@ -4,17 +4,17 @@
             <a href="">
                 <div class="img-overlay">
                     <div class="shadow"></div>
-                    <span class="title">{{{ $item->title }}}</span>  
+                    <span class="title">{{{ $item->imgtitle }}}</span>  
                 </div>
-                <img src="/hozzzone/public/img/asset/{{ $item->img }}" alt="">
+                <img src="/hozzzone/public/img/asset/{{ $item->filename }}" alt="">
             </a>      
         </div>
         <div class="info">
-            <a class="like" id="button-{{ $key + 1 }}" href="#"><span>+ {{ $item->hit }}</span></a>
+            <a class="like" id="button-{{ $key + 1 }}" href="#"><span>+ {{ $item->hits }}</span></a>
 
             <div class="avatar">
-                <img src="/hozzzone/public/avatar/{{ $item->avatar }}" alt="">
-                <span class="name">{{ $item->authorname }}</span>
+                <img src="/hozzzone/public/avatar/{{ $item->upuicon }}" alt="">
+                <span class="name">{{ $item->upuname }}</span>
             </div>
         </div>
     </li>@endforeach

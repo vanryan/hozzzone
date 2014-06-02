@@ -12,7 +12,7 @@
             include "sidebar.html"
         </div>
         <div id="main-box">
-            <ul class="default" id="defaultItems-1">
+            <ul class="default" id="defaultItems">
                 <li class="item" id="item-1">
                     <div class="avatar">
                         <img src="/hozzzone/public/img/long.jpg" alt="">
@@ -91,7 +91,7 @@
                 name: 'app',
                 children: [
                     {
-                        uid: 'defaultItems-1',
+                        uid: 'defaultItems',
                         name: 'defaultItems',
                         attrs: {
                             className: 'default'
@@ -172,7 +172,7 @@
                         ]
                     },
                     {
-                        uid: 'rightBar-1',
+                        uid: 'rightBar',
                         name: 'rightBar',
                         children: [
                             {
@@ -203,8 +203,8 @@
                                 ]
                             },
                             {
-                                uid: 'searchBox',
-                                name: 'searchBox'
+                                uid: 'searchForm',
+                                name: 'searchForm'
                             },
                             {
                                 uid: 'addHoz',
@@ -212,6 +212,10 @@
                                 data: {
                                         
                                 } 
+                            },
+                            {
+                                uid: 'backToTop',
+                                name: 'backToTop'
                             }
                         ] 
                     },

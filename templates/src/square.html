@@ -12,7 +12,7 @@
             include "sidebar.html"
         </div>
         <div id="main-box">
-            <ul class="square" id="squareItems-1">
+            <ul class="square" id="squareItems">
                 <li class="item" id="item-1">
                     <div class="content">
                         <a href="">
@@ -191,7 +191,7 @@
                 name: 'app',
                 children: [
                     {
-                        uid: 'squareItems-1',
+                        uid: 'squareItems',
                         name: 'squareItems',
                         attrs: {
                             className: 'square'
@@ -419,7 +419,7 @@
                         ]
                     },
                     {
-                        uid: 'rightBar-1',
+                        uid: 'rightBar',
                         name: 'rightBar',
                         children: [
                             {
@@ -450,6 +450,10 @@
                                 ]
                             },
                             {
+                                uid: 'searchForm',
+                                name: 'searchForm'  
+                            },
+                            {
                                 uid: 'addHoz',
                                 name: 'addHoz',
                                 data: {
@@ -468,17 +472,6 @@
         };
             
         H.init(view_json_square);
-        
-        // $('.content').eq(0).click();
-
-        function clickme() {
-            $('.front').eq(0).click();
-
-            setTimeout(clickme, 1000);
-        }        
-
-        // clickme();
-
         
 
     </script>

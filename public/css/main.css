@@ -1,7 +1,7 @@
 /*!
  * hozzz
  * @version 0.0.0
- * @time 2014-05-31 23:33
+ * @time 2014-06-02 18:5
  */
 
 /** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
@@ -185,7 +185,7 @@ a {
   bottom: 30px;
   right: 30px;
 }
-.rightBar .searchBox {
+.rightBar .searchForm {
   overflow: hidden;
   position: relative;
 }
@@ -205,6 +205,8 @@ a {
   top: 1px;
   right: 9px;
   cursor: pointer;
+  border: 0;
+  padding: 0;
 }
 
 .default .item {

@@ -43,7 +43,7 @@
                 </div>
             </div>    
 
-            <div id="rightBar-1" class="rightBar">
+            <div id="rightBar" class="rightBar">
                 <div class="layout">
                     <ul class="viewer" id="viewLayout">
                         <li class="default" id="layoutButton-1"><a href="#"></a></li>
@@ -53,11 +53,9 @@
                 </div>
                 <a class="add" id="addHoz">添加</a>
                 <div class="search">
-                    <form>
-                        <div class="searchBox" id="searchBox">
-                            <input type="text" class="search-text" placeholder="寻找..">
-                            <em class="search-img"></em>
-                        </div>
+                    <form class="searchForm" id="searchForm">
+                        <input type="text" class="search-text" placeholder="寻找..">
+                        <button class="search-img" type="submit"></button>
                     </form>
                 </div>
                 <div class="hot">
@@ -78,7 +76,7 @@
 
         </div>
         <div id="main-box">
-            <ul class="square" id="squareItems-1">
+            <ul class="square" id="squareItems">
                 <li class="item" id="item-1">
                     <div class="content">
                         <a href="">
@@ -257,7 +255,7 @@
                 name: 'app',
                 children: [
                     {
-                        uid: 'squareItems-1',
+                        uid: 'squareItems',
                         name: 'squareItems',
                         attrs: {
                             className: 'square'
@@ -485,7 +483,7 @@
                         ]
                     },
                     {
-                        uid: 'rightBar-1',
+                        uid: 'rightBar',
                         name: 'rightBar',
                         children: [
                             {
@@ -516,6 +514,10 @@
                                 ]
                             },
                             {
+                                uid: 'searchForm',
+                                name: 'searchForm'  
+                            },
+                            {
                                 uid: 'addHoz',
                                 name: 'addHoz',
                                 data: {
@@ -534,17 +536,6 @@
         };
             
         H.init(view_json_square);
-        
-        // $('.content').eq(0).click();
-
-        function clickme() {
-            $('.front').eq(0).click();
-
-            setTimeout(clickme, 1000);
-        }        
-
-        // clickme();
-
         
 
     </script>

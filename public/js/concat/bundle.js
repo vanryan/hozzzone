@@ -63,6 +63,9 @@ H.View = Backbone.View.extend({
         this.$el.removeAttr('id');
 
     },
+    childListen: function(event, callback) {
+    
+    },
     size: function() {
         // get the size of its children
         return this.children.length;
@@ -77,13 +80,13 @@ H.View = Backbone.View.extend({
     setChildViewById: function(name, value) {
         this.children[name] = value;
     },
-    findChildViewByElement: function(ele) {
+    getChildViewByElement: function(ele) {
         // _.filter returns an array
         return _.filter(this.children, function(c) {{
             return c.$el.is(ele);
-        }});  
+        }})[0];  
     },
-    appendChild: function(childViewData) {
+    appendChildView: function(childViewData) {
         this.$el.append(childViewData.html);
         H.viewFactory.append(siblingViewData.view, this);
         console.log('appended children');
@@ -91,7 +94,7 @@ H.View = Backbone.View.extend({
     removeChild: function() {
     
     },
-    appendSibling: function(siblingViewData) {
+    appendSiblingView: function(siblingViewData) {
         this.parent.$el.append(siblingViewData.html);
         H.viewFactory.append(siblingViewData.view, this.parent);
         console.log('appended a sibling!!'); 
@@ -108,11 +111,11 @@ H.View = Backbone.View.extend({
         this.remove();
 
     },
-    replaceEle: function(html) {
+    _replaceEle: function(html) {
         this.$el.before(html);
         this.destroy();
     },
-    replaceView: function(viewModule) {
+    _replaceView: function(viewModule) {
         // delete 'this' reference in the children object of parent
         // for garbage collection
         // delete this.parent.children[this.cid];
@@ -130,8 +133,18 @@ H.View = Backbone.View.extend({
         // of which the cause cannot be identified
 
     },
+    replaceWith: function(viewData) {
+        this._replaceEle(viewData.html);
+        this._replaceView(viewData.modules);
+    },
     showLoading: function() {
         console.log('Loading...'); 
+    },
+    hideLoading: function() {
+        console.log('hide loading');         
+    },
+    errorNotify: function(msg) {
+        console.log(msg);
     }
 });
 
@@ -203,22 +216,38 @@ _.extend(H.Resource.prototype, {
     call: function(method, callbacks) {
         var promise = this._call(method);
 
-        promise.fail(function(err) {
-            // console.log(err);
-        });
-
+        // customized success callback
         if(callbacks && callbacks.success) {
             promise.done(callbacks.success);
         }
 
+        // customized fail callback
         if(callbacks && callbacks.error) {
             promise.fail(callbacks.error);
         }
 
+        // customized always callback
         if(callbacks && callbacks.complete) {
             // whatever success or eroors, always excecute
             promise.always(callbacks.complete);
         }
+
+        // default fail callback
+        promise.fail(function(err) {
+
+            // how to send get ajax to be evaluated as error
+            // and also send client json 
+            // that includes this 'msg' property
+            H.View.prototype.hideLoading();
+            H.View.prototype.errorNotify(err);
+
+        });
+
+        // default success callback
+        promise.done(function() {
+            H.View.prototype.hideLoading();
+        });
+
         return promise;
         // still returns a promise
         // for chaining more 'done, then, fail' kind of method
@@ -246,92 +275,7 @@ _.extend(H.Resource.prototype, {
                 }
 
                 if(textStatus === 'error') {
-                    var test_json = {
-                        html: '<ul class="default" id="defaultItems-1"> <li class="item" id="item-1"> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">client</span> </div> <div class="content"> <div class="front"> <div> <a href="" class="calbum"><img src="../src/img/img1.png" alt=""></a> </div> <div> <span class="title">男士 手提包 时尚元素</span><br> <a class="like" id="button-1"  href="#"><span>1054</span></a> </div> </div> <div class="peek"> <div class="sub-item"><a href=""><img src="" alt=""></a></div> </div> </div> </li> <li class="item" id="item-2"> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">client</span> </div> <div class="content"> <div class="front"> <div> <a href="" class="calbum"><img src="../src/img/img1.png" alt=""></a> </div> <div> <span class="title">男士 手提包 时尚元素</span><br> <a class="like" id="button-2"  href="#"><span>1054</span></a> </div> </div> <div class="peek"> <div class="sub-item"><a href=""><img src="" alt=""></a></div> </div> </div> </li> <li class="item" id="item-3"> <div class="avatar"> <img src="../src/img/a.png" alt=""> <span class="name">client</span> </div> <div class="content"> <div class="front"> <div> <a href="" class="calbum"><img src="../src/img/img1.png" alt=""></a> </div> <div> <span class="title">男士 手提包 时尚元素</span><br> <a class="like" id="button-3"  href="#"><span>1054</span></a> </div> </div> <div class="peek"> <div class="sub-item"><a href=""><img src="" alt=""></a></div> </div> </div> </li> </ul>',
-                        view: {
-                            uid: 'defaultItems-1',
-                            name: 'defaultItems',
-                            attrs: {
-                                className: 'default'
-                            },
-                            data: {
-                                createdAt: '20140515092039'
-                            },
-                            children: [
-                                {
-                                    uid: 'item-1',
-                                    name: 'item',
-                                    attrs: {
-                                        className: 'item'
-                                    },
-                                    children: [
-                                        {
-                                            uid: 'button-1',
-                                            name: 'likeButton',
-                                            likeId: '82942934294',
-                                            attrs: {
-                                                className: 'like'
-                                            }
-                                        }   
-                                    ],
-                                    data: {
-                                        itemId: '239879342089304582304',
-                                        author: 'Brian Long',
-                                        time: '201405161129',
-                                        like: '1548'
-                                    }
-                                },
-                                {
-                                    uid: 'item-2',
-                                    name: 'item',
-                                    attrs: {
-                                        className: 'item'
-                                    },
-                                    data: {
-                                        itemId: '304582304',
-                                        author: 'B Long',
-                                        time: '20105161129',
-                                        like: '148'
-                                    },
-                                    children: [
-                                        {
-                                            uid: 'button-2',
-                                            name: 'likeButton',
-                                            likeId: '908203842042',
-                                            attrs: {
-                                                className: 'like'
-                                            }
-                                        }   
-                                    ]
-                                },
-                                {
-                                    uid: 'item-3',
-                                    name: 'item',
-                                    attrs: {
-                                        className: 'item'
-                                    },
-                                    children: [
-                                        {
-                                            uid: 'button-3',
-                                            name: 'likeButton',
-                                            likeId: '294829304242',
-                                            attrs: {
-                                                className: 'like'
-                                            }
-                                        }   
-                                    ],
-                                    data: {
-                                        itemId: '2398',
-                                        author: 'Brian asdfasLong',
-                                        time: '201405161129',
-                                        like: '154'
-                                    }
-                                }
-                            ]
-                        }
-                    };
-                    // return void defer.reject('error, fuck!');
-                     return void defer.reject(test_json);
+                     return void defer.reject('error, connection failed!');
                 }
 
                 var responseData = JSON.parse(jqXHR.responseText);
@@ -393,30 +337,38 @@ H.views.likeButton = H.View.extend();
 
 // big viewers
 H.views.Items = H.View.extend({
+
     checkOutPic: function(e) {
+
+        var target = $(e.currentTarget),
+            itemEle;
+
+        if (target.hasClass('content')) {
+            itemEle = target.closest('.item');
+        }
 
         var self = this;
 
-        this.showLoading(); 
-    
-        var picResource = H.resourceFactory('HozzzAlbum', {fuck: 'you'});
+        self.showLoading(); 
+
+
+        var itemView = this.getChildViewByElement(itemEle);
+        
+        var picResource = H.resourceFactory('album', {albumId: itemView.albumId});
 
         picResource = picResource.get({
             success: function(responseViewData) {
-                self.appendSibling(responseViewData);
-            },
-            error: function(data) {
-                // need a method that replace current whole subview of some view
-                // instead of just append views 
-                self.replaceEle(data.html);
-                self.replaceView(data.view);
+                self.appendSiblingView(responseViewData);
+                // self.replaceWith(responseViewData);
             }
         });
 
-
         e.preventDefault();
+        e.stopPropagation();
         return false;
+
     }
+
 });
 
 // use $._data(element, 'events') to check out the events that were attached to the element
@@ -433,7 +385,7 @@ H.views.squareItems = H.views.Items.extend({
 // view defaultItems inherits from H.views.Items
 H.views.defaultItems = H.views.Items.extend({
     events: {
-        'click .front': 'checkOutPic',
+        'click .content': 'checkOutPic',
         'mouseenter .front': 'dropDownAlbum',
     },
     dropDownAlbum: function(e) {
@@ -468,7 +420,14 @@ H.views.addHoz = H.views.Button.extend({
 
 H.views.backToTop = H.views.Button.extend({
     onClick: function() {
-        console.log('back to top');
+
+        $('body').animate({scrollTop: 0}, {
+            duration: 350,
+            complete: function() {
+                console.log('fuck you');
+            }
+        });
+
         return false;
     }
 });
@@ -492,11 +451,15 @@ H.views.viewLayout = H.View.extend({
     }
 });
 
-H.views.searchBox = H.View.extend({
+H.views.searchForm = H.View.extend({
     events: {
         'focus .search-text': 'widenInputBox',
         'blur .search-text': 'shortenInputBox',
-        'click .search-img': 'search'
+        'submit': 'onSubmit'
+    },
+    onSubmit: function(e) {
+        console.log('you just submitted!'); 
+        return false;
     },
     widenInputBox: function(e) {
         $(e.currentTarget).animate({
@@ -507,11 +470,9 @@ H.views.searchBox = H.View.extend({
         $(e.currentTarget).animate({
             'width': 70
         });
-    },
-    search: function(e) {
-        console.log('fuck, you just searched'); 
     }
 });
+
 ;var H = H || {};
 
 

@@ -19,7 +19,14 @@ H.views.addHoz = H.views.Button.extend({
 
 H.views.backToTop = H.views.Button.extend({
     onClick: function() {
-        console.log('back to top');
+
+        $('body').animate({scrollTop: 0}, {
+            duration: 350,
+            complete: function() {
+                console.log('fuck you');
+            }
+        });
+
         return false;
     }
 });
