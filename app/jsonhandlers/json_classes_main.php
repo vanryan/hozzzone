@@ -58,8 +58,8 @@ class hoz_json_html_factory {
             */
         if ( $type == 'ajax' && $name == 'sec' ) {
             if ( $genre == 'get' ) {
-                return View::make( 'layouts.' . $intention, array(
-                    ) );
+                $items = hoz_blade_data_factory::factory( 'show', $intention, $genre, 'items' );
+                return View::make( 'layouts.' . $intention, array($items) );
             } // end- if ( $genre == 'get' )
         } // end- if ( $type == 'ajax' && $name == 'sec' )
 
