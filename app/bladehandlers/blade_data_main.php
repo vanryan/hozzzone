@@ -23,6 +23,7 @@
 					$item_data = $item_data->datalist;
 					for($i=0;$i<Config::get('hoz_global_vars.' . $intention . '_num');$i++)
 					{
+						
 						$items[$i] = new hoz_viewBld_item;
 						$items[$i]->authorname = $item_data[$i]->upuname;
 						$items[$i]->avatar = $item_data[$i]->upuicon;
@@ -49,7 +50,7 @@
 	*/
 	class hoz_viewBld_item{
 		public $authorname,$avatar,$img,$title,$hit;
-		public $subItems=array();
+		public $subItems = array();
 	}
 
 	/*
