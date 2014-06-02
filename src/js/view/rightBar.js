@@ -18,11 +18,15 @@ H.views.viewLayout = H.View.extend({
     }
 });
 
-H.views.searchBox = H.View.extend({
+H.views.searchForm = H.View.extend({
     events: {
         'focus .search-text': 'widenInputBox',
         'blur .search-text': 'shortenInputBox',
-        'click .search-img': 'search'
+        'submit': 'onSubmit'
+    },
+    onSubmit: function(e) {
+        console.log('you just submitted!'); 
+        return false;
     },
     widenInputBox: function(e) {
         $(e.currentTarget).animate({
@@ -33,8 +37,6 @@ H.views.searchBox = H.View.extend({
         $(e.currentTarget).animate({
             'width': 70
         });
-    },
-    search: function(e) {
-        console.log('fuck, you just searched'); 
     }
 });
+

@@ -1,7 +1,7 @@
 /*!
  * hozzz
  * @version 0.0.0
- * @time 2014-05-31 19:56
+ * @time 2014-06-02 18:5
  */
 
 /** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */
@@ -185,7 +185,7 @@ a {
   bottom: 30px;
   right: 30px;
 }
-.rightBar .searchBox {
+.rightBar .searchForm {
   overflow: hidden;
   position: relative;
 }
@@ -205,6 +205,8 @@ a {
   top: 1px;
   right: 9px;
   cursor: pointer;
+  border: 0;
+  padding: 0;
 }
 
 .default .item {
@@ -519,13 +521,13 @@ a {
   background-repeat: no-repeat;
 }
 
-.loginBox .email, .loginBox .password {
+.loginRegBox .email, .loginRegBox .password, .loginRegBox .repassword, .loginRegBox .captchaText {
   padding: 10px;
   border-radius: 3px;
   margin: 0 auto 20px;
 }
 
-.loginBox .email, .loginBox .password, .loginBox .loginBtn, .loginBox .regLink, .loginBox .recommendAuthor, .loginBox .thirdPartyLogin {
+.loginRegBox .email, .loginRegBox .password, .loginRegBox .loginBtn, .loginRegBox .regLink, .loginRegBox .loginLink, .loginRegBox .registerBtn, .loginRegBox .recommendAuthor, .loginRegBox .thirdPartyLogin, .loginRegBox .repassword, .loginRegBox .captchaText {
   border: 0;
   box-shadow: 1px 1px 10px 2px #555;
   display: block;
@@ -541,7 +543,7 @@ a {
   height: 100%;
 }
 
-.loginBox {
+.loginRegBox {
   width: 500px;
   height: 300px;
   position: relative;
@@ -557,13 +559,13 @@ a {
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
-.loginBox .email {
+.loginRegBox .email {
   width: 200px;
 }
-.loginBox .password {
+.loginRegBox .password {
   width: 150px;
 }
-.loginBox .loginBtn {
+.loginRegBox .loginBtn {
   margin: 8px auto 0;
   width: 50px;
   height: 50px;
@@ -571,7 +573,7 @@ a {
   text-indent: -10000px;
   background: url() white no-repeat 50% 50%;
 }
-.loginBox .regLink {
+.loginRegBox .regLink, .loginRegBox .loginLink, .loginRegBox .registerBtn {
   display: block;
   width: 30px;
   text-align: center;
@@ -579,7 +581,7 @@ a {
   padding: 6px 10px;
   border-radius: 20px;
 }
-.loginBox .footer {
+.loginRegBox .footer {
   position: absolute;
   left: 0;
   right: 0;
@@ -587,16 +589,50 @@ a {
   padding: 21px 18px;
   overflow: hidden;
 }
-.loginBox .recommendAuthor {
+.loginRegBox .recommendAuthor {
   padding: 6px 10px;
   padding-left: 30px;
   border-radius: 3px;
   float: left;
 }
-.loginBox .thirdPartyLogin {
+.loginRegBox .thirdPartyLogin {
   padding: 4px 10px;
   border-radius: 3px;
   float: right;
+}
+
+.loginRegBox .registerForm {
+  text-align: center;
+}
+.loginRegBox .registerForm .email {
+  width: 150px;
+  display: inline-block;
+  margin-right: 40px;
+}
+.loginRegBox .registerForm .password {
+  display: inline-block;
+}
+.loginRegBox .repassword {
+  width: 150px;
+}
+.loginRegBox .captcha {
+  text-align: center;
+  padding-top: 5px;
+}
+.loginRegBox .captcha img {
+  width: 70px;
+  height: 30px;
+  vertical-align: middle;
+}
+.loginRegBox .captchaText {
+  width: 50px;
+  height: 10px;
+  vertical-align: middle;
+  display: inline-block;
+  margin: 0;
+}
+.loginRegBox .registerBtn {
+  box-sizing: content-box;
 }
 
 @media screen and (min-width: 320px) {

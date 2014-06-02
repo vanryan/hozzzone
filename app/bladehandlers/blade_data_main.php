@@ -19,10 +19,11 @@
 		public static function Factory($type, $intention, $genre){
 			if($genre == 'items'){
 				if($intention == 'defaultItems' || $intention == 'sqaureItems' || $intention == 'brickItems'){
-					$item_data = hoz_dataplane_factory::factory('show',$intention,'items');
-					$item_data = $item_data->datalist;
+					$items = hoz_dataplane_factory::factory('show',$intention,'items');
+					$items = $items->datalist;
 					for($i=0;$i<Config::get('hoz_global_vars.' . $intention . '_num');$i++)
 					{
+<<<<<<< HEAD
 						
 						$items[$i] = new hoz_viewBld_item;
 						$items[$i]->authorname = $item_data[$i]->upuname;
@@ -30,6 +31,9 @@
 						$items[$i]->img = $item_data[$i]->filename;
 						$items[$i]->title = $item_data[$i]->imgtitle;
 						$items[$i]->hit = $item_data[$i]->hits; 
+=======
+						$items[$i]->subItems = array(); 
+>>>>>>> 7ea76e312afce1a2d265e74e9570f3da17e1835f
 					} // End- if($intention == 'default' || $intention == 'sqaure' || $intention == 'brick')
 
 					return $items;

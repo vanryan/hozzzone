@@ -27,6 +27,9 @@ H.View = Backbone.View.extend({
         this.$el.removeAttr('id');
 
     },
+    childListen: function(event, callback) {
+    
+    },
     size: function() {
         // get the size of its children
         return this.children.length;
@@ -41,13 +44,13 @@ H.View = Backbone.View.extend({
     setChildViewById: function(name, value) {
         this.children[name] = value;
     },
-    findChildViewByElement: function(ele) {
+    getChildViewByElement: function(ele) {
         // _.filter returns an array
         return _.filter(this.children, function(c) {{
             return c.$el.is(ele);
-        }});  
+        }})[0];  
     },
-    appendChild: function(childViewData) {
+    appendChildView: function(childViewData) {
         this.$el.append(childViewData.html);
         H.viewFactory.append(siblingViewData.view, this);
         console.log('appended children');
@@ -55,7 +58,7 @@ H.View = Backbone.View.extend({
     removeChild: function() {
     
     },
-    appendSibling: function(siblingViewData) {
+    appendSiblingView: function(siblingViewData) {
         this.parent.$el.append(siblingViewData.html);
         H.viewFactory.append(siblingViewData.view, this.parent);
         console.log('appended a sibling!!'); 
@@ -72,11 +75,11 @@ H.View = Backbone.View.extend({
         this.remove();
 
     },
-    replaceEle: function(html) {
+    _replaceEle: function(html) {
         this.$el.before(html);
         this.destroy();
     },
-    replaceView: function(viewModule) {
+    _replaceView: function(viewModule) {
         // delete 'this' reference in the children object of parent
         // for garbage collection
         // delete this.parent.children[this.cid];
@@ -94,8 +97,18 @@ H.View = Backbone.View.extend({
         // of which the cause cannot be identified
 
     },
+    replaceWith: function(viewData) {
+        this._replaceEle(viewData.html);
+        this._replaceView(viewData.modules);
+    },
     showLoading: function() {
         console.log('Loading...'); 
+    },
+    hideLoading: function() {
+        console.log('hide loading');         
+    },
+    errorNotify: function(msg) {
+        console.log(msg);
     }
 });
 
