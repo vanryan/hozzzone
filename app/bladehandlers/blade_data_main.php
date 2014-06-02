@@ -18,7 +18,7 @@
 
 		public static function Factory($type, $intention, $genre){
 			if($genre == 'items'){
-				if($intention == 'defaultItems' || $intention == 'sqaureItems' || $intention == 'brickItems'){
+				if($intention == 'defaultItems' || $intention == 'squareItems' || $intention == 'brickItems'){
 					$items = hoz_dataplane_factory::factory('show',$intention,'items');
 					$items = $items->datalist;
 					for($i=0;$i<Config::get('hoz_global_vars.' . $intention . '_num');$i++)
@@ -26,7 +26,7 @@
 
 						$items[$i]->subItems = array(); 
 
-					} // End- if($intention == 'default' || $intention == 'sqaure' || $intention == 'brick')
+					} // End- if($intention == 'default' || $intention == 'square' || $intention == 'brick')
 
 					return $items;
 				}

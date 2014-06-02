@@ -58,9 +58,10 @@ class hoz_json_html_factory {
             */
         if ( $type == 'ajax' && $name == 'sec' ) {
             if ( $genre == 'get' ) {
-                $items = hoz_blade_data_factory::factory( 'show', $intention, $genre, 'items' );
-                return 'sdaf';
-                return View::make( 'layouts.' . $intention, array("items" => $items) );
+
+                $items = hoz_blade_data_factory::factory( 'show', $intention, 'items' );
+
+                return View::make( 'layouts.' . $intention, array("items" => $items) )->render();
             } // end- if ( $genre == 'get' )
         } // end- if ( $type == 'ajax' && $name == 'sec' )
 

@@ -48,13 +48,13 @@ class hoz_dataplane_items {
 
 	public function __construct( $type, $intention ) {
 		if ( $type == 'init' ) {
-			if ( $intention == 'defaultItems' || $intention == 'sqaureItems' || $intention == 'brickItems' ) {
+			if ( $intention == 'defaultItems' || $intention == 'squareItems' || $intention == 'brickItems' ) {
 				$this->datalist = Imageind::take( Config::get( 'hoz_global_vars.'. $intention .'_num' ) )
 				->get( array( 'id', 'upuname', 'created_at', 'hits' ) );
 			}
 		} // End- if($type == 'init')
 		if ( $type == 'show' ) {
-			if ( $intention == 'defaultItems' || $intention == 'sqaureItems' || $intention == 'brickItems' ) {
+			if ( $intention == 'defaultItems' || $intention == 'squareItems' || $intention == 'brickItems' ) {
 				$this->datalist = Imageind::take( Config::get( 'hoz_global_vars.'. $intention .'_num' ) )
 				->get( array( 'upuname', 'upuicon', 'filename', 'imgtitle', 'hits' ) );
 			}

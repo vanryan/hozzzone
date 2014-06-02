@@ -11,7 +11,7 @@ return array(
 	'brickItems_num'=>15,
 
 	// The number of items (big pics) in square(masonery) pages when first presented
-	'squareItems_num'=>28,
+	'squareItems_num'=>5,
 
 	/*
 	View number settings for 3 flows -- udefview
