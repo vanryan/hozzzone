@@ -10,26 +10,24 @@ class CreateImageindsTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
-	{
-		Schema::create('imageinds', function(Blueprint $table)
-		{
-			$table->bigIncrements('id');
-			$table->string('filename',64)->unique();
-			$table->string('imgtitle',60)->nullable();
+	public function up() {
+		Schema::create( 'imageinds', function( Blueprint $table ) {
+				$table->bigIncrements( 'id' );
+				$table->string( 'filename', 64 )->unique();
+				$table->string( 'imgtitle', 60 )->nullable();
 
-			$table->bigInteger('upuid');
-			$table->string('upuname',32);
-			$table->string('upuicon',42)->nullable()->default('default_avatar');
-			
-			$table->timestamps();
+				$table->bigInteger( 'upuid' );
+				$table->string( 'upuname', 32 );
+				$table->string( 'upuicon', 42 )->nullable()->default( 'default_avatar' );
 
-			$table->tinyInteger('srseq')->default(0);
-			$table->integer('srid')->default(0);
-			$table->tinyInteger('srcover')->default(0);
+				$table->timestamps();
 
-			$table->integer('hits')->default(0);
-		});
+				$table->tinyInteger( 'srseq' )->default( 0 );
+				$table->integer( 'srid' )->default( 0 );
+				$table->tinyInteger( 'srcover' )->default( 0 );
+
+				$table->integer( 'hits' )->default( 0 );
+			} );
 	}
 
 	/**
@@ -37,9 +35,8 @@ class CreateImageindsTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
-	{
-		Schema::drop('imageinds');
+	public function down() {
+		Schema::drop( 'imageinds' );
 	}
 
 }

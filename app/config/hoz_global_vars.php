@@ -1,22 +1,22 @@
 <?php
 
 return array(
-	/* 
+	/*
 	Item number settings for 3 flows
 	*/
 	// The number of items (big pics) in default(dynatorrent) pages when first presented
-	'default_item_num'=>5,
+	'defaultItems_num'=>5,
 
 	// The number of items (big pics) in brick(masonery) pages when first presented
-	'brick_item_num'=>15,
+	'brickItems_num'=>15,
 
 	// The number of items (big pics) in square(masonery) pages when first presented
-	'square_item_num'=>28,
+	'squareItems_num'=>28,
 
-	/* 
+	/*
 	View number settings for 3 flows -- udefview
 	*/
-	'udefview'=>array('none','default','square','brick'),
+	'udefview'=>array( 'none', 'default', 'square', 'brick' ),
 
 	/*
 	@Image settings
@@ -36,8 +36,8 @@ return array(
 
 	'thumb_img_width_height'=>100
 
-	);
-	/* 
+);
+/*
 	End-Item number settings for 3 flows
 	*/
 ?>
